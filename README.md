@@ -1,166 +1,133 @@
-# Hack the Hackathon - Deployment Guide
+# Hackathon Management System with AI Agents
 
-This document provides instructions for deploying the Hack the Hackathon platform, an agentic AI system for planning, running, and managing hackathons using Azure services.
+A comprehensive platform for organizing and managing hackathons with the help of intelligent AI agents. This application streamlines every aspect of planning, running, and managing hackathons with intelligent AI-powered assistance.
 
-## System Architecture
+![Hackathon Management System](public/images/hackathon1.jpg)
 
-The Hack the Hackathon platform consists of two main components:
+## Features
 
-1. **Frontend Website**: A React-based web application with Redux for state management
-2. **Backend API & AI Agents**: An Express.js server with Azure OpenAI Service integration
+- **AI-Powered Agents**: Specialized agents for registration, team formation, scheduling, judging, and more
+- **Participant Management**: Register participants, form teams, and track attendance
+- **Hackathon Organization**: Create and manage multiple hackathons with detailed information
+- **Real-time Assistance**: Get automated help for common tasks and questions
+- **Role-based Access**: Different interfaces for participants, mentors, and organizers
+- **Interactive Dashboard**: Track progress, manage tasks, and get insights
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 
-## Prerequisites
+## AI Agents
 
-- Node.js 16.x or higher
-- npm 8.x or higher
-- Azure account with access to Azure OpenAI Service
-- MongoDB instance (optional)
+This system includes several specialized AI agents to help manage different aspects of hackathons:
 
-## Deployment Options
+- **Registration Agent**: Streamlines participant signup, validates data, and suggests skills
+- **Team Formation Agent**: Matches participants based on complementary skills and interests
+- **Scheduling Agent**: Creates optimized event timelines and sends reminders
+- **Submission Agent**: Processes project submissions and provides feedback
+- **Judging Agent**: Facilitates fair evaluation of projects
+- **Communication Agent**: Manages notifications and updates
+- **Coordinator Agent**: Orchestrates communication between other agents
 
-### Option 1: Local Deployment
+## Technology Stack
 
-#### Frontend Deployment
+- **Frontend**: React, Redux, Tailwind CSS, React Router
+- **Backend**: Node.js, Express
+- **AI**: Azure OpenAI Service
+- **Build Tools**: Vite, PostCSS
+- **Styling**: Tailwind CSS, Custom CSS
+- **Deployment**: Docker, Nginx
 
-1. Navigate to the website directory:
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm or yarn
+- Git
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Dally101/Hackthehack.git
+   cd Hackthehack
    ```
-   cd /path/to/hackathon_project/website
-   ```
 
-2. Install dependencies:
-   ```
+2. Install dependencies
+   ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. Build the production version:
-   ```
-   npm run build
-   ```
-
-4. Serve the built files:
-   ```
-   npx serve -s dist
+3. Start the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
    ```
 
-#### Backend Deployment
+4. Open your browser and navigate to `http://localhost:3001`
 
-1. Navigate to the backend directory:
-   ```
-   cd /path/to/hackathon_project/backend
-   ```
+### Building for Production
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+To create a production build:
 
-3. Create a `.env` file based on `.env.example`:
-   ```
-   cp .env.example .env
-   ```
+```bash
+npm run build
+# or
+yarn build
+```
 
-4. Update the `.env` file with your Azure OpenAI Service credentials and other configuration values.
+## Usage
 
-5. Start the server:
-   ```
-   npm start
-   ```
+### For Participants
 
-### Option 2: Azure Deployment
+1. Register for an account by clicking "Sign Up" or "Register"
+2. Browse available hackathons on the Hackathons page
+3. Register for a hackathon by clicking on it and selecting "Register"
+4. Create or join a team
+5. Submit your project before the deadline
 
-#### Frontend Deployment with Azure Static Web Apps
+### For Organizers
 
-1. Create an Azure Static Web App resource in the Azure Portal.
+1. Click "Start Organizing" to create an organizer account
+2. After logging in, use the dashboard to create a new hackathon
+3. Configure hackathon details, timeline, prizes, and judging criteria
+4. Monitor registrations, teams, and submissions
+5. Use the AI agents to automate tasks and get assistance
 
-2. Configure GitHub Actions or Azure DevOps for CI/CD:
-   - Connect your repository
-   - Set the build configuration:
-     - App location: `/website`
-     - API location: `/backend`
-     - Output location: `dist`
+### For Mentors
 
-3. Push your code to trigger the deployment.
+1. Register as a mentor through the sign-up page
+2. Browse hackathons you're mentoring
+3. View teams and provide feedback
+4. Schedule mentor sessions with teams
 
-#### Backend Deployment with Azure App Service
+## Screenshots
 
-1. Create an Azure App Service resource in the Azure Portal.
+- Home Page: Showcases AI agents and main features
+- Hackathon Listing: Browse all available hackathons
+- Hackathon Detail: View comprehensive information about each hackathon
+- Registration: User-friendly registration process
+- Dashboard: Centralized management interface
 
-2. Configure the deployment source (GitHub, Azure DevOps, etc.).
+## Contributing
 
-3. Set the following Application Settings in the Azure Portal:
-   - `AZURE_OPENAI_ENDPOINT`: Your Azure OpenAI Service endpoint
-   - `AZURE_OPENAI_API_KEY`: Your Azure OpenAI API key
-   - `AZURE_OPENAI_DEPLOYMENT_NAME`: Your deployment name
-   - `MONGODB_URI`: Connection string to your MongoDB (if using)
-   - `JWT_SECRET`: Secret for JWT authentication
-   - Other environment variables as needed
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-4. Deploy the backend code to Azure App Service.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### Option 3: Docker Deployment
+## License
 
-#### Building and Running Docker Containers
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-1. Build the frontend Docker image:
-   ```
-   cd /path/to/hackathon_project/website
-   docker build -t hackathon-frontend .
-   ```
+## Contact
 
-2. Build the backend Docker image:
-   ```
-   cd /path/to/hackathon_project/backend
-   docker build -t hackathon-backend .
-   ```
+Project Link: [https://github.com/Dally101/Hackthehack](https://github.com/Dally101/Hackthehack)
 
-3. Run the containers:
-   ```
-   docker run -d -p 3000:80 hackathon-frontend
-   docker run -d -p 5000:5000 --env-file .env hackathon-backend
-   ```
+---
 
-## Azure OpenAI Service Configuration
-
-1. Create an Azure OpenAI Service resource in the Azure Portal.
-
-2. Deploy a model (e.g., GPT-4) with an appropriate deployment name.
-
-3. Get the endpoint URL and API key from the Azure Portal.
-
-4. Update the backend `.env` file or Azure App Service configuration with these values.
-
-## Testing the Deployment
-
-1. Access the frontend application at the deployed URL or http://localhost:3000 for local deployment.
-
-2. Test the backend API health check at `/health` endpoint.
-
-3. Verify AI agent functionality by testing a simple agent endpoint, such as:
-   ```
-   POST /api/agents/communication/answer-question
-   {
-     "question": "What is Hack the Hackathon?",
-     "hackathonDetails": {},
-     "userContext": { "role": "participant" }
-   }
-   ```
-
-## Troubleshooting
-
-- **Azure OpenAI Service Issues**: Verify API keys, endpoints, and deployment names. Check quota limits.
-- **Frontend Connection Issues**: Ensure CORS is properly configured in the backend.
-- **Backend Startup Failures**: Check environment variables and logs for errors.
-
-## Security Considerations
-
-- Always use HTTPS in production
-- Store API keys and secrets securely
-- Implement proper authentication and authorization
-- Regularly update dependencies
-
-## Monitoring and Maintenance
-
-- Set up Azure Application Insights for monitoring
-- Configure alerts for error rates and performance issues
-- Regularly backup any persistent data
-- Schedule regular updates and maintenance
+Built with ❤️ using React and Azure OpenAI
