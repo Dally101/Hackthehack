@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Azure color scheme */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+    --primary: 207 100% 42%; /* Azure Blue #0078D4 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 100% 65%; /* Azure Teal #50E6FF */
+    --secondary-foreground: 220 20% 15%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 270 50% 58%; /* Azure Purple #8661C5 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 100% 42%;
+    --chart-1: 207 100% 42%; /* Azure Blue */
+    --chart-2: 190 100% 65%; /* Azure Teal */
+    --chart-3: 270 50% 58%; /* Azure Purple */
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+  
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Azure dark mode color scheme */
+    --background: 220 20% 15%;
+    --foreground: 0 0% 100%;
+    --card: 220 20% 15%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 20% 15%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 207 100% 42%; /* Azure Blue #0078D4 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 100% 65%; /* Azure Teal #50E6FF */
+    --secondary-foreground: 220 20% 15%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 270 50% 58%; /* Azure Purple #8661C5 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 207 100% 42%;
+    --chart-1: 207 100% 42%; /* Azure Blue */
+    --chart-2: 190 100% 65%; /* Azure Teal */
+    --chart-3: 270 50% 58%; /* Azure Purple */
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the hackathon website */
+.hero-section {
+  @apply relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-accent text-white;
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.section-title {
+  @apply text-3xl font-bold text-center mb-10 text-primary;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition-all;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground px-6 py-2 rounded-md hover:bg-opacity-90 transition-all;
+}
+
+.btn-accent {
+  @apply bg-accent text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition-all;
+}
+
+.timeline-item {
+  @apply relative pl-10 pb-10 border-l-2 border-primary;
+}
+
+.timeline-dot {
+  @apply absolute -left-[9px] w-4 h-4 rounded-full bg-primary;
+}
+
+.timeline-content {
+  @apply bg-white p-4 rounded-lg shadow-md;
+}

@@ -1,0 +1,307 @@
+Specifications Document
+      Connected Systems Institute
+
+           April 25-27, 2025
+
+
+           Sponsoring Partners
+Hack the Hackathon: Specifications
+Connected Systems Institute (CSI) | University of Wisconsin–Milwaukee
+April 25–27, 2025
+
+Overview
+Planning a hackathon is a complex, resource-intensive effort involving dozens of interconnected
+tasks, many of which require manual coordination, constant updates, and tight deadlines. For
+this challenge, your goal is to design an agentic AI system that can take initiative, communicate
+across workflows, and help manage the event lifecycle with minimal human intervention. A
+successful solution will reduce the overhead of running hackathons and make it easier for an
+organization like CSI to scale these events in the future.
+
+
+The Challenge
+In Hack the Hackathon, your task is to design and prototype an agentic AI system capable of
+managing the lifecycle of a hackathon event at CSI.
+
+From registration and sponsor engagement to logistics, communication, website updates, and
+post-event reporting, hackathons involve dozens of moving parts. Your team will build a system
+that leverages agentic AI to coordinate, automate, and proactively manage these workflows.
+
+You’ll have access to Azure AI and CoPilot 365 and host of free tools curated for this event, as
+well as coaching support from CSI, faculty, fellow graduate students, and industry partners.
+Your solution should reflect real-world utility, creativity, and collaborative intelligence between
+agents.
+
+Hackathon Lifecycle – Actions for Agentic AI
+
+Below are some of the tasks to consider. A successful solution need not address all these issues,
+but a strong prototype will demonstrate how agents can take ownership of key responsibilities,
+interact intelligently with data and people, and handle real-world event logistics with clarity and
+efficiency.
+
+Pre-Planning & Setup
+
+   •   Create and maintain project timelines and to-do lists
+   •   Draft personalized outreach emails for students and faculty
+   •   Post announcements across platforms (website, social, campus)
+
+
+
+                                                                                                  2
+Registration & Communication
+
+   •   Monitor and manage registration form submissions
+   •   Send personalized confirmation and reminder emails
+   •   Track attendee counts and flag missing information
+   •   Generate rosters and name tags
+   •   Push updates to registrants (e.g., schedule changes, mentor sessions, location and time
+       reminders)
+
+Logistics Management
+
+   •   Create campus signage
+   •   Coordinate with UWM 20/20 catering (number of students, menu, timing, dietary
+       needs)
+   •   Schedule and remind workshop facilitators or judges
+   •   Generate event agendas
+
+Sponsor & Partner Engagement
+
+   •   Track communication history with sponsors and partners
+   •   Send reminders about swag, prizes, judge sign-ups, and deliverables
+   •   Gather bios, logos, and talk titles from speakers
+   •   Schedule prep calls and share relevant documents
+   •   Send thank-you messages post-event with highlights
+
+Participant Support During Event
+
+   •   Manage Q&A or help desk workflows (via email or chat bot)
+   •   Remind participants about deadlines
+   •   Notify teams of last-minute updates or coaching/workshop changes
+   •   Log and route mentor check-ins with teams
+
+Post-Event Wrap-Up
+
+   •   Generate and distribute feedback surveys to attendees, mentors, and sponsors
+   •   Collect and analyze feedback and metrics (attendance, engagement)
+   •   Compile summary reports for sponsors or leadership
+   •   Recommend improvements for future events
+   •   Archive materials and outcomes for future reuse
+
+Bonus Agentic Behaviors to Consider
+
+   •   Agents that communicate with each other (e.g., registration agent notifies logistics
+       agent when headcount changes)
+
+
+
+                                                                                                 3
+   •   Agents that monitor constraints or goals (e.g., stay within budget, maximize
+       engagement)
+   •   Agents that can adapt to changes or reschedule based on conflicts or delays
+
+Ethics Statement
+Hack the Hackathon is an educational experience designed to help students learn how to use
+agentic AI competently and responsibly. Participants will explore how AI can support—not
+replace—human decision-making, and will be encouraged to apply sound judgment, ethical
+reasoning, and critical thinking throughout the event.
+
+All datasets used in the hackathon are fictitious. No real personal or institutional data will be
+used.
+
+We ask students to consider the broader implications of their solutions, including fairness,
+inclusivity, and transparency. This event is not just about building technology—it’s about
+learning to do so thoughtfully and securely, with care for people and systems.
+
+Team Formation
+   •   Teams must consist of 3–5 students.
+   •   All participants must be current UWM undergraduate or graduate students
+   •   Interdisciplinary and mixed-experience teams are encouraged!
+
+Available Tools
+The solution should include Microsoft tools, but you are welcome to integrate other solutions.
+Teams will have access to the following through CSI’s Azure subscription, which participants can
+access with their ePanther IDs:
+
+   •   Azure OpenAI (build GPT-powered agents)
+   •   Power Automate (create flows for coordination, alerts, and task automation)
+   •   Azure Logic Apps (integrate services like Outlook, SharePoint, Forms, and Teams)
+   •   Azure Functions (optional – build custom triggers)
+   •   Azure Storage & App Services (for hosting content or data)
+   •   Azure AI Foundry
+   •   CoPilot 365
+   •   CSI GitHub Repo (coding assistant – bring your personal GitHub login)
+   •   A recommended list of free tools (shared in Canvas)
+   •   Canvas Site (for sharing hackathon information, files, links)
+   •   Sharepoint Folder (with fictitious hackathon data)
+
+
+
+
+                                                                                                    4
+Hackathon Timeline
+Friday, April 25 – Launch
+
+   •   1:00–1:30 PM | Welcome – Joe Hamann, PhD, CSI
+   •   1:30-2:00 PM| Challenge Overview – Casey O’Brien, CSI
+   •   2:00–3:00 PM | Azure and Agentic AI Overview – Srikanth Bhakthan, Principal Cloud
+       Architect, Microsoft
+   •   3:15 PM | Participants organize into teams
+   •   3:30 PM | Hacking begins!
+   •   CSI closes at 9:00
+
+Saturday, April 26
+
+   •   CSI open 9:00 AM – 9:00 PM
+   •   Mentors and coaches will drop in throughout the day, both in person and online
+
+Sunday, April 27
+
+   •   CSI Open 9:00 AM
+   •   Solutions due by 12:30 PM
+   •   1:00–3:00 PM | Final Presentations (CSI Classroom)
+   •   3:00-4:00 | Networking—Relax with snacks while the judges deliberate
+   •   4:00-4:30 | Awards Ceremony to follow immediately (CSI Classroom)
+
+Food and beverage will be provided throughout the hackathon. Participants are also welcome
+to bring their own food. CSI has a refrigerator you may use to store food.
+
+What to Deliver
+By Sunday, April 27, 12:30, each team must share their code to CSI’s GitHub and upload their
+presentation to the Agentic AI Hackathon Canvas site.
+
+Upload into Canvas Site:
+
+   •   An 8-minute presentation/demo of your agentic AI solution
+   •   A brief slide deck
+   •   Optional: A link or mp4 of a 2-minute demo video
+
+Upload into CSI’s GitHub repo:
+
+   •   Source files (code, flows, assets)
+   •   A README with:
+          o Description of the system
+
+
+                                                                                               5
+           o   Roles of each agent
+           o   Technologies used
+           o   How to redeploy
+
+Teams will be given 8 minutes to present and 4 minutes to answer questions. See the
+Presentation Expectations and Criteria below for more specifics.
+
+Presentation Expectations
+   •   Introduce your team and the problem you set out to solve
+   •   Explain the core agents in your system and their responsibilities
+   •   Demonstrate how the agents work—live or recorded
+   •   Highlight collaboration, decision-making, and initiative among agents
+   •   Discuss what went well and what you’d improve with more time
+   •   Be ready to answer questions from judges and mentors
+
+Prize Categories – $5,000 in Awards
+   •   Best Overall Agentic AI Solution – $1,500
+   •   Best Use of Azure AI Tools – $1,000
+   •   Most Collaborative Multi-Agent System – $1,000
+   •   Best Implementation Potential – $700
+   •   Audience Favorite – $500
+   •   Best First-Time Hacker Team – $300
+
+Descriptions and criteria of each category follow:
+
+Best Overall Agentic AI Solution – $1,500
+Awarded to the team that delivers the most complete, innovative, and technically sound
+solution across all judging dimensions. Judges will look for strong alignment with the
+hackathon’s challenge, smart agent behavior, effective use of AI tools, real-world relevance,
+and a polished presentation. This category rewards well-rounded excellence in vision,
+execution, and delivery.
+What we're looking for:
+   •   Clear understanding and creative interpretation of the hackathon challenge
+   •   Seamless, intelligent interaction between agents
+   •   Technical strength and thoughtful use of available tools
+   •   Real-world viability and scalability
+   •   Clear, confident communication of your work
+
+
+
+
+                                                                                                6
+Best Use of Azure AI Tools – $1,000
+This award goes to the team that makes the most effective and creative use of Azure
+technologies to power their solution. Whether it's Azure OpenAI, Power Automate, Logic Apps,
+or other Microsoft tools, this prize celebrates technical fluency and integration.
+
+What we're looking for:
+  • Thoughtful selection and application of Azure tools
+  • Creative use of AI capabilities (e.g., GPT, automation, orchestration)
+  • Integration of multiple services into a cohesive system
+  • Strong understanding of each tool’s role in the overall solution
+
+
+
+Most Collaborative Multi-Agent System – $1,000
+This prize recognizes the team that builds the most well-orchestrated network of agents
+working together to achieve shared goals. Judges will evaluate how well your agents
+communicate, delegate, and support one another across workflows.
+
+What we're looking for:
+  • Multiple agents with distinct roles and responsibilities
+  • Inter-agent communication (e.g., triggering actions, sharing data)
+  • Dynamic responses to changes, delays, or constraints
+  • A system that feels more like a team than a collection of tools
+
+
+
+Best Implementation Potential – $700
+This award honors the solution with the strongest potential to be deployed in a real-world
+setting. Judges will consider usability, feasibility, and how well the system could scale to
+manage future CSI hackathons or similar events.
+
+What we're looking for:
+  • A clear, understandable system architecture
+  • Practicality: easy to deploy, maintain, and extend
+  • Appropriate trade-offs between complexity and usability
+  • Attention to real-world constraints like time, staffing, and cost
+
+
+
+Audience Favorite – $500
+This is a new award! Chosen by your fellow participants, mentors, and visitors during the final
+presentations. This award goes to the team that captures the imagination of the audience with
+a creative, compelling, or inspiring solution.
+
+
+                                                                                                  7
+What the audience is looking for:
+      • Strong storytelling and presentation style
+      • Engaging demo or visual design
+      • Original, memorable concept
+      • Broad appeal across backgrounds and experience levels
+
+
+
+Best First-Time Hacker Team – $300
+Also new!!! This award is open to teams made up entirely of first-time hackathon participants.
+This prize celebrates new voices in innovation and recognizes impressive effort, creativity, and
+learning in your first event.
+
+What we're looking for:
+  • Demonstrated growth and problem-solving throughout the weekend
+  • A functional, thoughtful solution—even if simple
+  • Willingness to explore new tools and ideas
+  • Teamwork, enthusiasm, and resilience
+
+
+Additional Info
+   •   CSI facility open until 9:00 PM on Friday and Saturday to provide a collaboration space.
+       We reopen at 9:00 a.m. on Saturday and Sunday to reconvene.
+   •   Meals, snacks, and beverages will be provided throughout the event.
+   •   Bring your laptops and chargers.
+
+We're looking forward to a weekend of creativity, collaboration, and future-forward solutions.
+Good luck, and let’s Hack the Hackathon!
+
+
+
+
+                                                                                                   8
+
