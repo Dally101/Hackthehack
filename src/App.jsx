@@ -11,6 +11,7 @@ import RegistrationPage from './components/pages/RegistrationPage';
 import DashboardPage from './components/pages/DashboardPage';
 import FaqPage from './components/pages/FaqPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+import MarketingAgentPage from './components/pages/MarketingAgentPage';
 import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -54,6 +55,7 @@ function App() {
                   <DashboardPage />
                 </ProtectedRoute>
               } />
+              <Route path="/marketing" element={<MarketingAgentPage />} />
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/register" element={<RegisterForm />} />

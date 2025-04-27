@@ -1,0 +1,111 @@
+{% extends "base_template.html" %}
+
+{% block title %}Social Media Post Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="platform" class="form-label">Platform</label>
+    <select class="form-select" id="platform" name="platform">
+        <option value="LinkedIn">LinkedIn</option>
+        <option value="Twitter">Twitter/X</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Instagram">Instagram</option>
+        <option value="TikTok">TikTok</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="message" class="form-label">Main Message</label>
+    <textarea class="form-control" id="message" name="message" rows="2"
+              placeholder="What's the main message of your post?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="hashtags" class="form-label">Hashtags</label>
+    <input type="text" class="form-control" id="hashtags" name="hashtags" 
+           placeholder="#marketing #socialmedia #digital">
+</div>
+
+<div class="mb-3">
+    <label for="include-media" class="form-check-label">
+        <input type="checkbox" class="form-check-input" id="include-media" name="include_media">
+        Include image description
+    </label>
+</div>
+
+<div class="mb-3 media-description" style="display: none;">
+    <label for="media-desc" class="form-label">Image Description</label>
+    <textarea class="form-control" id="media-desc" name="media_desc" rows="2"
+              placeholder="Describe the image that should accompany this post"></textarea>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Social Media Post Guide</h5>
+    </div>
+    <div class="card-body">
+        <p>Platform-specific best practices:</p>
+        <ul>
+            <li><strong>LinkedIn:</strong> Professional tone, industry insights, longer format (1,300 characters)</li>
+            <li><strong>Twitter/X:</strong> Concise, engaging, under 280 characters, 1-2 hashtags</li>
+            <li><strong>Facebook:</strong> Conversational, question-based, medium length (100-250 words)</li>
+            <li><strong>Instagram:</strong> Visual, story-focused, 5-10 relevant hashtags</li>
+            <li><strong>TikTok:</strong> Trending, authentic, actionable insights, 2-3 relevant hashtags</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for social media content
+    const defaultTemplate = "Write a {platform} post about {message}. " +
+                           "The post should be in a {tone} tone for {audience}. " +
+                           "Include these hashtags: {hashtags}. " +
+                           "{include_media_desc}";
+    
+    // Toggle media description field visibility
+    document.getElementById('include-media').addEventListener('change', function() {
+        const mediaDescDiv = document.querySelector('.media-description');
+        if (this.checked) {
+            mediaDescDiv.style.display = 'block';
+        } else {
+            mediaDescDiv.style.display = 'none';
+        }
+        updatePromptFromFields();
+    });
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('platform').addEventListener('change', updatePromptFromFields);
+    document.getElementById('message').addEventListener('change', updatePromptFromFields);
+    document.getElementById('hashtags').addEventListener('change', updatePromptFromFields);
+    document.getElementById('media-desc').addEventListener('change', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const platform = document.getElementById('platform').value || "social media";
+        const message = document.getElementById('message').value || "{message}";
+        const hashtags = document.getElementById('hashtags').value || "{hashtags}";
+        const includeMedia = document.getElementById('include-media').checked;
+        const mediaDesc = document.getElementById('media-desc').value || "";
+        const audience = document.getElementById('audience').value || "{audience}";
+        const tone = document.getElementById('tone').value || "{tone}";
+        
+        let mediaText = "";
+        if (includeMedia && mediaDesc) {
+            mediaText = "Include this image description: " + mediaDesc;
+        }
+        
+        let template = defaultTemplate;
+        template = template.replace('{platform}', platform);
+        template = template.replace('{message}', message);
+        template = template.replace('{hashtags}', hashtags);
+        template = template.replace('{include_media_desc}', mediaText);
+        template = template.replace('{audience}', audience);
+        template = template.replace('{tone}', tone);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

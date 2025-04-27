@@ -1,0 +1,5 @@
+# Azure AI Projects Configuration
+AZURE_ENDPOINT=https://your-ai-project-endpoint.azure.com
+AZURE_SUBSCRIPTION_ID=your-subscription-id
+AZURE_RESOURCE_GROUP=your-resource-group-name
+AZURE_PROJECT_NAME=your-ai-project-name 

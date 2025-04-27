@@ -1,0 +1,116 @@
+{% extends "base_template.html" %}
+
+{% block title %}Social Media Post Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="platform" class="form-label">Platform</label>
+    <select class="form-select" id="platform" name="platform">
+        <option value="linkedin">LinkedIn</option>
+        <option value="twitter">Twitter/X</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="tiktok">TikTok</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea class="form-control" id="message" name="message" rows="3"
+              placeholder="Enter your social media post content"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="hashtags" class="form-label">Hashtags (optional)</label>
+    <input type="text" class="form-control" id="hashtags" name="hashtags" 
+           placeholder="#marketing #social #digital">
+</div>
+
+<div class="mb-3">
+    <label for="call-to-action" class="form-label">Call to Action (optional)</label>
+    <input type="text" class="form-control" id="call-to-action" name="call_to_action" 
+           placeholder="What action do you want readers to take?">
+</div>
+
+<div class="mb-3">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="include-image" name="include_image">
+        <label class="form-check-label" for="include-image">
+            Include image description
+        </label>
+    </div>
+</div>
+
+<div class="mb-3 image-description" style="display: none;">
+    <label for="image-desc" class="form-label">Image Description</label>
+    <textarea class="form-control" id="image-desc" name="image_desc" rows="2"
+              placeholder="Describe the image that should accompany this post"></textarea>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Quick Platform Tips</h5>
+    </div>
+    <div class="card-body">
+        <ul>
+            <li><strong>LinkedIn:</strong> Professional, ~1300 chars, 2-3 hashtags</li>
+            <li><strong>Twitter/X:</strong> Concise (280 chars), 1-2 hashtags</li>
+            <li><strong>Facebook:</strong> Conversational, medium length</li>
+            <li><strong>Instagram:</strong> Visual-focused, 5-10 hashtags</li>
+            <li><strong>TikTok:</strong> Authentic, trending, 2-3 hashtags</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template
+    const defaultTemplate = "Create a {platform} post with the following content:\n\n" +
+                           "{message}\n\n" +
+                           "Hashtags: {hashtags}\n" +
+                           "Call to action: {call_to_action}\n" +
+                           "{image_desc}";
+    
+    // Toggle image description field
+    document.getElementById('include-image').addEventListener('change', function() {
+        const imageDescDiv = document.querySelector('.image-description');
+        if (this.checked) {
+            imageDescDiv.style.display = 'block';
+        } else {
+            imageDescDiv.style.display = 'none';
+        }
+        updatePromptFromFields();
+    });
+    
+    // Listen for changes
+    document.getElementById('platform').addEventListener('change', updatePromptFromFields);
+    document.getElementById('message').addEventListener('input', updatePromptFromFields);
+    document.getElementById('hashtags').addEventListener('input', updatePromptFromFields);
+    document.getElementById('call-to-action').addEventListener('input', updatePromptFromFields);
+    document.getElementById('image-desc').addEventListener('input', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const platform = document.getElementById('platform').value || "social media";
+        const message = document.getElementById('message').value || "Enter your message";
+        const hashtags = document.getElementById('hashtags').value || "";
+        const callToAction = document.getElementById('call-to-action').value || "";
+        
+        const includeImage = document.getElementById('include-image').checked;
+        const imageDesc = includeImage ? 
+                          "Image description: " + (document.getElementById('image-desc').value || "describe image") : 
+                          "";
+        
+        let template = defaultTemplate;
+        template = template.replace('{platform}', platform);
+        template = template.replace('{message}', message);
+        template = template.replace('{hashtags}', hashtags);
+        template = template.replace('{call_to_action}', callToAction);
+        template = template.replace('{image_desc}', imageDesc);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

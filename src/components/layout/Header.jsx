@@ -82,6 +82,9 @@ const Header = () => {
             <NavLink to="/about" active={isActive('/about')}>
             About
             </NavLink>
+            <NavLink to="/marketing" active={isActive('/marketing')}>
+              Marketing AI
+            </NavLink>
             <NavLink to="/faq" active={isActive('/faq')}>
               FAQ
             </NavLink>
@@ -160,6 +163,9 @@ const Header = () => {
             </MobileNavLink>
             <MobileNavLink to="/about" active={isActive('/about')} onClick={toggleMenu}>
               About
+            </MobileNavLink>
+            <MobileNavLink to="/marketing" active={isActive('/marketing')} onClick={toggleMenu}>
+              Marketing AI
             </MobileNavLink>
             <MobileNavLink to="/faq" active={isActive('/faq')} onClick={toggleMenu}>
               FAQ

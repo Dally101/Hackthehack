@@ -1,0 +1,41 @@
+# Instructions for Updating Your .env File
+
+We detected that your existing .env file has Azure OpenAI configuration, but for the Azure Marketing Agent demo, we need Azure AI Projects configuration. 
+
+Please add the following variables to your existing .env file:
+
+```
+# Azure AI Projects Configuration
+AZURE_ENDPOINT=https://your-ai-project-endpoint.azure.com
+AZURE_SUBSCRIPTION_ID=your-subscription-id
+AZURE_RESOURCE_GROUP=your-resource-group-name
+AZURE_PROJECT_NAME=your-ai-project-name
+```
+
+## How to Find These Values
+
+1. **AZURE_ENDPOINT**: 
+   - Go to your Azure AI Studio project in the Azure portal
+   - Look for the "Endpoint" value in the project overview
+
+2. **AZURE_SUBSCRIPTION_ID**:
+   - In the Azure portal, go to "Subscriptions" 
+   - Copy the ID of the subscription where your AI project is located
+
+3. **AZURE_RESOURCE_GROUP**:
+   - This is the name of the resource group where your AI project is located
+
+4. **AZURE_PROJECT_NAME**:
+   - This is the name of your Azure AI Project as it appears in the Azure portal
+
+## Notes
+
+- Do not use quotes around the values
+- Ensure there are no extra spaces around the equal sign (=)
+- Keep your existing configuration for other Azure services
+
+After updating your .env file, run the demo with:
+
+```
+python fixed_demo.py --use-azure --type "social media post" --audience "tech enthusiasts" --tone "enthusiastic"
+``` 

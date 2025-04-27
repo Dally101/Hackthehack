@@ -1,0 +1,117 @@
+{% extends "base_template.html" %}
+
+{% block title %}Blog Post Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="blog-title" class="form-label">Blog Title</label>
+    <input type="text" class="form-control" id="blog-title" name="blog_title" 
+           placeholder="Enter an engaging blog title">
+</div>
+
+<div class="mb-3">
+    <label for="blog-type" class="form-label">Blog Type</label>
+    <select class="form-select" id="blog-type" name="blog_type">
+        <option value="how-to">How-to Guide</option>
+        <option value="listicle">List-based Article</option>
+        <option value="thought-leadership">Thought Leadership</option>
+        <option value="case-study">Case Study</option>
+        <option value="news">Industry News Analysis</option>
+        <option value="comparison">Comparison/Review</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="main-topic" class="form-label">Main Topic</label>
+    <textarea class="form-control" id="main-topic" name="main_topic" rows="2"
+              placeholder="What's the main topic or thesis of your blog post?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="key-points" class="form-label">Key Points</label>
+    <textarea class="form-control" id="key-points" name="key_points" rows="3"
+              placeholder="Enter 3-5 main points/sections to cover in the blog"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="keywords" class="form-label">SEO Keywords</label>
+    <input type="text" class="form-control" id="keywords" name="keywords" 
+           placeholder="Enter target keywords (comma separated)">
+</div>
+
+<div class="mb-3">
+    <label for="call-to-action" class="form-label">Call to Action</label>
+    <input type="text" class="form-control" id="call-to-action" name="call_to_action" 
+           placeholder="What action should readers take after reading?">
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Blog Post Best Practices</h5>
+    </div>
+    <div class="card-body">
+        <p>Blog type formats:</p>
+        <ul>
+            <li><strong>How-to Guide:</strong> Step-by-step instructions, clear headings, actionable advice</li>
+            <li><strong>List-based Article:</strong> Numbered points, scannable format, consistent structure</li>
+            <li><strong>Thought Leadership:</strong> Industry insights, unique perspective, data-backed claims</li>
+            <li><strong>Case Study:</strong> Problem-solution format, specific results, storytelling elements</li>
+            <li><strong>News Analysis:</strong> Current context, expert interpretation, implications for readers</li>
+            <li><strong>Comparison/Review:</strong> Clear criteria, balanced assessment, helpful recommendations</li>
+        </ul>
+        <p>General blog writing tips:</p>
+        <ul>
+            <li>Include a compelling introduction that hooks readers</li>
+            <li>Use descriptive H2 and H3 headings for scannable content</li>
+            <li>Aim for 1,200-1,800 words for in-depth SEO optimized content</li>
+            <li>Include relevant internal and external links</li>
+            <li>Use visuals, examples, and data to support main points</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for blog posts
+    const defaultTemplate = "Write a {blog_type} blog post titled '{blog_title}'. " +
+                           "The main topic is: {main_topic}. " +
+                           "Include these key points as sections: {key_points}. " +
+                           "The blog should be in a {tone} tone for {audience}. " + 
+                           "Optimize for these SEO keywords: {keywords}. " +
+                           "End with this call to action: {call_to_action}.";
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('blog-title').addEventListener('change', updatePromptFromFields);
+    document.getElementById('blog-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('main-topic').addEventListener('change', updatePromptFromFields);
+    document.getElementById('key-points').addEventListener('change', updatePromptFromFields);
+    document.getElementById('keywords').addEventListener('change', updatePromptFromFields);
+    document.getElementById('call-to-action').addEventListener('change', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const blogTitle = document.getElementById('blog-title').value || "{blog_title}";
+        const blogType = document.getElementById('blog-type').value || "how-to";
+        const mainTopic = document.getElementById('main-topic').value || "{main_topic}";
+        const keyPoints = document.getElementById('key-points').value || "{key_points}";
+        const keywords = document.getElementById('keywords').value || "{keywords}";
+        const callToAction = document.getElementById('call-to-action').value || "{call_to_action}";
+        const audience = document.getElementById('audience').value || "{audience}";
+        const tone = document.getElementById('tone').value || "{tone}";
+        
+        let template = defaultTemplate;
+        template = template.replace('{blog_title}', blogTitle);
+        template = template.replace('{blog_type}', blogType);
+        template = template.replace('{main_topic}', mainTopic);
+        template = template.replace('{key_points}', keyPoints);
+        template = template.replace('{keywords}', keywords);
+        template = template.replace('{call_to_action}', callToAction);
+        template = template.replace('{audience}', audience);
+        template = template.replace('{tone}', tone);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

@@ -5,23 +5,38 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const FLASK_PORT = process.env.FLASK_PORT || 5000;
+const MARKETING_AGENT_PORT = process.env.MARKETING_AGENT_PORT || 5001;
 
 // Enable gzip compression
 app.use(compression());
 
 // Set up proxy middleware for API requests
 app.use('/api', createProxyMiddleware({
-  target: 'http://localhost:5000',
+  target: `http://localhost:${FLASK_PORT}`,
   changeOrigin: true,
   pathRewrite: {
     '^/api': '/api', // no rewrite needed
   },
   onProxyRes: (proxyRes, req, res) => {
-    console.log(`Proxied ${req.method} ${req.url} → ${proxyRes.statusCode}`);
+    console.log(`Proxied API ${req.method} ${req.url} → ${proxyRes.statusCode}`);
   },
 }));
 
-console.log('API requests proxied to http://localhost:5000');
+// Set up proxy middleware for Marketing Agent requests
+app.use('/marketing-agent', createProxyMiddleware({
+  target: `http://localhost:${MARKETING_AGENT_PORT}`,
+  changeOrigin: true,
+  pathRewrite: {
+    '^/marketing-agent': '/', // rewrite to root path
+  },
+  onProxyRes: (proxyRes, req, res) => {
+    console.log(`Proxied Marketing Agent ${req.method} ${req.url} → ${proxyRes.statusCode}`);
+  },
+}));
+
+console.log(`API requests proxied to http://localhost:${FLASK_PORT}`);
+console.log(`Marketing Agent requests proxied to http://localhost:${MARKETING_AGENT_PORT}`);
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));

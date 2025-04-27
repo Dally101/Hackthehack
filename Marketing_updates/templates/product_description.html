@@ -1,0 +1,346 @@
+{% extends "base_template.html" %}
+
+{% block title %}Create Product Description{% endblock %}
+
+{% block content_form %}
+<form id="productDescriptionForm" class="content-form">
+  <div class="form-section">
+    <h3>Product Basics</h3>
+    <div class="input-group">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" name="productName" placeholder="Official name of the product" required>
+    </div>
+    
+    <div class="input-group">
+      <label for="productCategory">Product Category</label>
+      <select id="productCategory" name="productCategory" required>
+        <option value="">Select category</option>
+        <option value="tech">Technology/Electronics</option>
+        <option value="software">Software/App</option>
+        <option value="fashion">Fashion/Apparel</option>
+        <option value="beauty">Beauty/Personal Care</option>
+        <option value="home">Home/Furniture</option>
+        <option value="food">Food/Beverage</option>
+        <option value="health">Health/Wellness</option>
+        <option value="service">Service/Subscription</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="productPurpose">Primary Purpose/Function</label>
+      <textarea id="productPurpose" name="productPurpose" placeholder="What is the main purpose of this product? What problem does it solve?" rows="2" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="targetPlatform">Target Platform/Channel</label>
+      <select id="targetPlatform" name="targetPlatform" required>
+        <option value="">Select platform</option>
+        <option value="website">Company Website</option>
+        <option value="ecommerce">E-commerce Listing</option>
+        <option value="amazon">Amazon</option>
+        <option value="catalog">Print Catalog</option>
+        <option value="social">Social Media</option>
+        <option value="email">Email Campaign</option>
+        <option value="app">App Store</option>
+        <option value="packaging">Product Packaging</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Target Audience</h3>
+    <div class="input-group">
+      <label for="targetAudience">Primary Target Audience</label>
+      <textarea id="targetAudience" name="targetAudience" placeholder="Who is this product designed for? Include demographics, psychographics, etc." rows="3" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="customerPainPoints">Customer Pain Points</label>
+      <textarea id="customerPainPoints" name="customerPainPoints" placeholder="What problems or challenges does your audience face that this product addresses?" rows="3" required></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Product Details</h3>
+    <div class="input-group">
+      <label for="keyFeatures">Key Features (3-5)</label>
+      <textarea id="keyFeatures" name="keyFeatures" placeholder="List the most important features of your product" rows="4" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="primaryBenefits">Primary Benefits (3-5)</label>
+      <textarea id="primaryBenefits" name="primaryBenefits" placeholder="How do these features benefit the user? What outcomes can they expect?" rows="4" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="specifications">Technical Specifications</label>
+      <textarea id="specifications" name="specifications" placeholder="Dimensions, materials, technical details, etc." rows="4"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="uniqueSellingPoints">Unique Selling Points</label>
+      <textarea id="uniqueSellingPoints" name="uniqueSellingPoints" placeholder="What makes this product different from competitors? Why should someone choose this product?" rows="3" required></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Tone and Style</h3>
+    <div class="input-group">
+      <label for="brandVoice">Brand Voice</label>
+      <select id="brandVoice" name="brandVoice" required>
+        <option value="">Select tone</option>
+        <option value="professional">Professional/Formal</option>
+        <option value="conversational">Conversational/Friendly</option>
+        <option value="enthusiastic">Enthusiastic/Energetic</option>
+        <option value="technical">Technical/Detailed</option>
+        <option value="luxurious">Luxurious/Premium</option>
+        <option value="playful">Playful/Humorous</option>
+        <option value="authoritative">Authoritative/Expert</option>
+        <option value="minimalist">Minimalist/Straightforward</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="descriptionLength">Description Length</label>
+      <select id="descriptionLength" name="descriptionLength" required>
+        <option value="">Select length</option>
+        <option value="brief">Brief (100-150 words)</option>
+        <option value="standard">Standard (200-300 words)</option>
+        <option value="detailed">Detailed (400-600 words)</option>
+        <option value="comprehensive">Comprehensive (700+ words)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Content Elements</h3>
+    <div class="input-group">
+      <label for="socialProof">Social Proof Elements</label>
+      <textarea id="socialProof" name="socialProof" placeholder="Testimonials, reviews, ratings, awards, or certifications to include" rows="3"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="callToAction">Primary Call to Action</label>
+      <input type="text" id="callToAction" name="callToAction" placeholder="What action should readers take? (e.g., 'Buy Now', 'Learn More')" required>
+    </div>
+    
+    <div class="input-group">
+      <label for="pricing">Pricing Information</label>
+      <textarea id="pricing" name="pricing" placeholder="Price point, special offers, pricing tiers, etc." rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="keywords">SEO Keywords (if applicable)</label>
+      <input type="text" id="keywords" name="keywords" placeholder="Primary and secondary keywords to include">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Information</h3>
+    <div class="input-group">
+      <label for="specialInstructions">Special Instructions</label>
+      <textarea id="specialInstructions" name="specialInstructions" placeholder="Any additional information or special requests for the AI" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="primary-button">Generate Product Description</button>
+    <button type="reset" class="secondary-button">Reset Form</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block template_guide %}
+<div class="template-guide">
+  <h2>Product Description Writing Guide</h2>
+  
+  <div class="guide-section">
+    <h3>Effective Structure</h3>
+    <ol>
+      <li><strong>Hook/Introduction:</strong> Capture attention with a compelling opening line that speaks to the customer's needs</li>
+      <li><strong>Overview:</strong> Provide a high-level summary of what the product is and who it's for</li>
+      <li><strong>Features and Benefits:</strong> Describe key features and explain their benefits to the user</li>
+      <li><strong>Social Proof:</strong> Include testimonials, reviews, or usage statistics (if available)</li>
+      <li><strong>Technical Details:</strong> Provide specifications and practical information</li>
+      <li><strong>Call to Action:</strong> End with a clear next step for the customer</li>
+    </ol>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Platform-Specific Recommendations</h3>
+    <div class="collapsible">
+      <div class="collapsible-header">E-commerce Website</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Use scannable format with bullets and subheadings</li>
+          <li>Prioritize benefits early in the description</li>
+          <li>Include complete specifications and dimensions</li>
+          <li>Address common questions and objections</li>
+          <li>Optimize for SEO with relevant keywords</li>
+          <li>Use high-quality images with descriptive alt text</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Amazon Listing</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Focus on benefits in the first 3-5 bullet points</li>
+          <li>Use keyword-rich titles but avoid keyword stuffing</li>
+          <li>Address common questions to reduce returns</li>
+          <li>Include size, dimensions, and compatibility information</li>
+          <li>Write for mobile users with concise, scannable format</li>
+          <li>Follow Amazon's content guidelines and character limits</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">App Store Listing</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Highlight key functionality in the first sentence</li>
+          <li>List core features as concise bullet points</li>
+          <li>Mention compatibility and technical requirements</li>
+          <li>Include update information for existing apps</li>
+          <li>Address privacy and security features</li>
+          <li>Use keywords naturally throughout the description</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Writing Tips</h3>
+    <ul>
+      <li><strong>Focus on benefits, not just features:</strong> Explain how features improve the customer's life</li>
+      <li><strong>Use sensory language:</strong> Help customers imagine using the product</li>
+      <li><strong>Address the customer directly:</strong> Use "you" and "your" language</li>
+      <li><strong>Be specific:</strong> Use concrete details, numbers, and examples</li>
+      <li><strong>Avoid jargon:</strong> Use simple language unless targeting a technical audience</li>
+      <li><strong>Create desire:</strong> Highlight emotional and practical benefits</li>
+      <li><strong>Anticipate objections:</strong> Address common concerns or questions</li>
+      <li><strong>Use active voice:</strong> Makes descriptions more engaging and direct</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Feature vs. Benefit Examples</h3>
+    <table class="guide-table">
+      <tr>
+        <th>Feature</th>
+        <th>Benefit</th>
+      </tr>
+      <tr>
+        <td>Lightweight design (2.5 lbs)</td>
+        <td>Easy to carry all day without fatigue</td>
+      </tr>
+      <tr>
+        <td>10-hour battery life</td>
+        <td>Work confidently all day without searching for outlets</td>
+      </tr>
+      <tr>
+        <td>Machine-washable fabric</td>
+        <td>Save time and money on cleaning and maintenance</td>
+      </tr>
+      <tr>
+        <td>Advanced noise cancellation</td>
+        <td>Focus better in noisy environments</td>
+      </tr>
+      <tr>
+        <td>One-touch setup</td>
+        <td>Start using your device in seconds, no technical expertise needed</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="guide-section">
+    <h3>SEO Best Practices</h3>
+    <ul>
+      <li>Include primary keyword in the first 100 words</li>
+      <li>Use secondary keywords naturally throughout the text</li>
+      <li>Create unique content (avoid copying manufacturer descriptions)</li>
+      <li>Use descriptive subheadings (H2, H3) with keywords</li>
+      <li>Optimize for readability and user experience first</li>
+      <li>Include product specifications in an easy-to-scan format</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update description length indicator based on platform
+    const targetPlatform = document.getElementById('targetPlatform');
+    const descriptionLength = document.getElementById('descriptionLength');
+    
+    targetPlatform.addEventListener('change', function() {
+      const lengthLabel = document.querySelector('label[for="descriptionLength"]');
+      
+      switch(this.value) {
+        case 'amazon':
+          lengthLabel.innerHTML = 'Description Length <small>(Amazon recommends 300-500 words)</small>';
+          break;
+        case 'app':
+          lengthLabel.innerHTML = 'Description Length <small>(App stores typically recommend 150-300 words)</small>';
+          break;
+        case 'ecommerce':
+          lengthLabel.innerHTML = 'Description Length <small>(E-commerce platforms typically use 250-400 words)</small>';
+          break;
+        default:
+          lengthLabel.innerHTML = 'Description Length';
+      }
+    });
+    
+    // Dynamic field for technical specifications based on product category
+    const productCategory = document.getElementById('productCategory');
+    const specifications = document.getElementById('specifications');
+    
+    productCategory.addEventListener('change', function() {
+      const specLabel = document.querySelector('label[for="specifications"]');
+      let placeholder = "Dimensions, materials, technical details, etc.";
+      
+      switch(this.value) {
+        case 'tech':
+          specLabel.innerHTML = 'Technical Specifications <small>(Focus on hardware details)</small>';
+          placeholder = "Dimensions, weight, materials, processor, memory, storage, battery life, connectivity options, etc.";
+          break;
+        case 'software':
+          specLabel.innerHTML = 'Technical Specifications <small>(Focus on compatibility and requirements)</small>';
+          placeholder = "System requirements, supported platforms, file size, integrations, API access, etc.";
+          break;
+        case 'fashion':
+          specLabel.innerHTML = 'Product Specifications <small>(Focus on materials and sizing)</small>';
+          placeholder = "Materials, fabric content, care instructions, available sizes, fit type, dimensions/measurements, etc.";
+          break;
+        case 'beauty':
+          specLabel.innerHTML = 'Product Specifications <small>(Focus on ingredients and usage)</small>';
+          placeholder = "Key ingredients, volume/weight, usage instructions, shelf life, allergen information, etc.";
+          break;
+        default:
+          specLabel.innerHTML = 'Technical Specifications';
+      }
+      
+      specifications.placeholder = placeholder;
+    });
+    
+    // Initialize collapsible sections
+    const collapsibles = document.querySelectorAll('.collapsible-header');
+    collapsibles.forEach(collapsible => {
+      collapsible.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>
+{% endblock %} 

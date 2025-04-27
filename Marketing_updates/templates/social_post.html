@@ -1,0 +1,206 @@
+{% extends "base_template.html" %}
+
+{% block title %}Social Media Post Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="platform" class="form-label">Platform</label>
+    <select class="form-select" id="platform" name="platform">
+        <option value="linkedin">LinkedIn</option>
+        <option value="twitter">Twitter/X</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="tiktok">TikTok</option>
+        <option value="pinterest">Pinterest</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="post-type" class="form-label">Post Type</label>
+    <select class="form-select" id="post-type" name="post_type">
+        <option value="educational">Educational/Informative</option>
+        <option value="promotional">Promotional/Product</option>
+        <option value="engagement">Engagement/Question</option>
+        <option value="company-news">Company News/Update</option>
+        <option value="industry-news">Industry News/Trend</option>
+        <option value="event">Event Promotion</option>
+        <option value="user-generated">User-Generated Content Share</option>
+        <option value="storytelling">Brand Storytelling</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="main-topic" class="form-label">Main Topic</label>
+    <textarea class="form-control" id="main-topic" name="main_topic" rows="2"
+              placeholder="What is the post about? Be specific about the main message or focus"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="key-points" class="form-label">Key Points</label>
+    <textarea class="form-control" id="key-points" name="key_points" rows="3"
+              placeholder="What are the key points or messages you want to convey?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="target-audience" class="form-label">Target Audience</label>
+    <input type="text" class="form-control" id="target-audience" name="target_audience" 
+           placeholder="Who specifically are you targeting with this post?">
+</div>
+
+<div class="mb-3">
+    <label for="tone" class="form-label">Tone</label>
+    <select class="form-select" id="tone" name="tone">
+        <option value="professional">Professional</option>
+        <option value="casual">Casual</option>
+        <option value="enthusiastic">Enthusiastic</option>
+        <option value="humorous">Humorous</option>
+        <option value="inspiring">Inspiring</option>
+        <option value="authoritative">Authoritative</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="hashtags" class="form-label">Hashtag Ideas</label>
+    <input type="text" class="form-control" id="hashtags" name="hashtags" 
+           placeholder="Suggest relevant hashtags or keywords for hashtags">
+</div>
+
+<div class="mb-3">
+    <label for="call-to-action" class="form-label">Call to Action</label>
+    <input type="text" class="form-control" id="call-to-action" name="call_to_action" 
+           placeholder="What action do you want readers to take? (Comment, share, click link, etc.)">
+</div>
+
+<div class="mb-3">
+    <label for="visual-elements" class="form-label">Visual Elements</label>
+    <textarea class="form-control" id="visual-elements" name="visual_elements" rows="2"
+              placeholder="Describe images, graphics, video ideas or other visuals to accompany the post"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="link-to-include" class="form-label">Link to Include</label>
+    <input type="text" class="form-control" id="link-to-include" name="link_to_include" 
+           placeholder="URL to include in the post (if any)">
+</div>
+
+<div class="mb-3">
+    <label for="posting-time" class="form-label">Optimal Posting Time</label>
+    <select class="form-select" id="posting-time" name="posting_time">
+        <option value="recommend">Recommend based on platform</option>
+        <option value="morning">Morning</option>
+        <option value="midday">Midday</option>
+        <option value="afternoon">Afternoon</option>
+        <option value="evening">Evening</option>
+        <option value="weekend">Weekend</option>
+    </select>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Social Media Post Best Practices</h5>
+    </div>
+    <div class="card-body">
+        <p>Platform-specific guidelines:</p>
+        <ul>
+            <li><strong>LinkedIn:</strong> Professional tone, industry insights, career advice, company updates (1,500-2,000 character limit)</li>
+            <li><strong>Twitter/X:</strong> Concise, newsworthy, question-based engagement, trending topics (280 character limit)</li>
+            <li><strong>Facebook:</strong> Community focused, stories, questions, videos, longer form content (63,206 character limit but aim for 1-2 paragraphs)</li>
+            <li><strong>Instagram:</strong> Highly visual, authentic stories, lifestyle content, behind-the-scenes (2,200 character limit but aim for 1-3 short paragraphs)</li>
+            <li><strong>TikTok:</strong> Entertaining, educational, authentic, trending sounds/effects (2,200 character limit but focus on video content)</li>
+            <li><strong>Pinterest:</strong> Inspirational, DIY, planning, lifestyle, strong visuals (500 character limit)</li>
+        </ul>
+
+        <p>Post type best practices:</p>
+        <ul>
+            <li><strong>Educational:</strong> Lead with a surprising fact, break down complex topics, use numbered lists</li>
+            <li><strong>Promotional:</strong> Focus on benefits not features, include social proof, create urgency</li>
+            <li><strong>Engagement:</strong> Ask open-ended questions, use polls, invite opinions on trending topics</li>
+            <li><strong>Company News:</strong> Share the impact not just the announcement, highlight people involved</li>
+            <li><strong>Industry News:</strong> Add your unique perspective, explain why it matters to your audience</li>
+            <li><strong>Event:</strong> Create FOMO, highlight key speakers/activities, clear date/time/location</li>
+            <li><strong>User-Generated:</strong> Thank the original creator, add your insights, ask for more submissions</li>
+            <li><strong>Storytelling:</strong> Use narrative structure, create emotional connection, authentic voice</li>
+        </ul>
+
+        <p>General tips for all platforms:</p>
+        <ul>
+            <li>Start with a hook in the first line (question, surprising fact, bold statement)</li>
+            <li>Break text into short paragraphs with line breaks for readability</li>
+            <li>Use emojis strategically to highlight key points (1-3 per post)</li>
+            <li>Include relevant hashtags (2-5 for most platforms, 10-15 for Instagram)</li>
+            <li>End with a clear, single call-to-action</li>
+            <li>Create alignment between text content and visual elements</li>
+            <li>Respond to comments within 24 hours to boost engagement</li>
+        </ul>
+
+        <p>Optimal posting times:</p>
+        <ul>
+            <li><strong>LinkedIn:</strong> Tuesday through Thursday, 9am-12pm</li>
+            <li><strong>Twitter/X:</strong> Monday through Friday, 8am-4pm</li>
+            <li><strong>Facebook:</strong> Tuesday through Thursday, 1pm-4pm</li>
+            <li><strong>Instagram:</strong> Monday, Wednesday, and Friday, 11am-1pm</li>
+            <li><strong>TikTok:</strong> Tuesday through Saturday, 7pm-9pm</li>
+            <li><strong>Pinterest:</strong> Saturday and Sunday, 8pm-11pm</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for social media post content
+    const defaultTemplate = "Create a {post_type} social media post for {platform} about {main_topic}. " +
+                           "The target audience is {target_audience} and the tone should be {tone}. " +
+                           "Include these key points: {key_points}. " +
+                           "Suggest these hashtags: {hashtags}. " +
+                           "Visual elements to include: {visual_elements}. " +
+                           "The call to action should be: {call_to_action}. " +
+                           "Include this link: {link_to_include}. " +
+                           "Recommend posting at {posting_time}. " +
+                           "Please format the post appropriately for the platform with proper spacing, emojis, and hashtag placement.";
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('platform').addEventListener('change', updatePromptFromFields);
+    document.getElementById('post-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('main-topic').addEventListener('input', updatePromptFromFields);
+    document.getElementById('key-points').addEventListener('input', updatePromptFromFields);
+    document.getElementById('target-audience').addEventListener('input', updatePromptFromFields);
+    document.getElementById('tone').addEventListener('change', updatePromptFromFields);
+    document.getElementById('hashtags').addEventListener('input', updatePromptFromFields);
+    document.getElementById('call-to-action').addEventListener('input', updatePromptFromFields);
+    document.getElementById('visual-elements').addEventListener('input', updatePromptFromFields);
+    document.getElementById('link-to-include').addEventListener('input', updatePromptFromFields);
+    document.getElementById('posting-time').addEventListener('change', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const platform = document.getElementById('platform').value || "linkedin";
+        const postType = document.getElementById('post-type').value || "educational";
+        const mainTopic = document.getElementById('main-topic').value || "{main_topic}";
+        const keyPoints = document.getElementById('key-points').value || "{key_points}";
+        const targetAudience = document.getElementById('target-audience').value || "{target_audience}";
+        const tone = document.getElementById('tone').value || "professional";
+        const hashtags = document.getElementById('hashtags').value || "{hashtags}";
+        const callToAction = document.getElementById('call-to-action').value || "{call_to_action}";
+        const visualElements = document.getElementById('visual-elements').value || "{visual_elements}";
+        const linkToInclude = document.getElementById('link-to-include').value || "{link_to_include}";
+        const postingTime = document.getElementById('posting-time').value || "recommend";
+        
+        let template = defaultTemplate;
+        template = template.replace('{platform}', platform);
+        template = template.replace('{post_type}', postType);
+        template = template.replace('{main_topic}', mainTopic);
+        template = template.replace('{key_points}', keyPoints);
+        template = template.replace('{target_audience}', targetAudience);
+        template = template.replace('{tone}', tone);
+        template = template.replace('{hashtags}', hashtags);
+        template = template.replace('{call_to_action}', callToAction);
+        template = template.replace('{visual_elements}', visualElements);
+        template = template.replace('{link_to_include}', linkToInclude);
+        template = template.replace('{posting_time}', postingTime);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

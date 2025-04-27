@@ -1,0 +1,21 @@
+# Azure AI Projects Configuration
+# Copy this content to your .env file
+
+# Required for Azure AI Projects connection
+AZURE_ENDPOINT=https://your-project-endpoint.azure.com
+AZURE_SUBSCRIPTION_ID=your-subscription-id
+AZURE_RESOURCE_GROUP=your-resource-group-name
+AZURE_PROJECT_NAME=your-ai-project-name
+
+# Azure authentication (use if DefaultAzureCredential is not suitable)
+# AZURE_CLIENT_ID=your-client-id
+# AZURE_CLIENT_SECRET=your-client-secret
+# AZURE_TENANT_ID=your-tenant-id
+
+# Optional settings
+# AZURE_MODEL=gpt-4  # Default model to use
+
+# Note:
+# 1. Replace the placeholder values with your actual Azure AI Project values
+# 2. Make sure there are no extra spaces around the equal sign (=)
+# 3. Do not use quotes around the values 

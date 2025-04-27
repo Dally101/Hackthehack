@@ -1,0 +1,428 @@
+{% extends "base_template.html" %}
+
+{% block title %}Create Email Campaign{% endblock %}
+
+{% block content_form %}
+<form id="emailCampaignForm" class="content-form">
+  <div class="form-section">
+    <h3>Campaign Basics</h3>
+    <div class="input-group">
+      <label for="campaignType">Email Campaign Type</label>
+      <select id="campaignType" name="campaignType" required>
+        <option value="">Select campaign type</option>
+        <option value="newsletter">Newsletter</option>
+        <option value="promotional">Promotional</option>
+        <option value="announcement">Announcement</option>
+        <option value="educational">Educational Content</option>
+        <option value="onboarding">Onboarding Sequence</option>
+        <option value="nurture">Nurture Campaign</option>
+        <option value="retention">Retention/Re-engagement</option>
+        <option value="event">Event Invitation</option>
+        <option value="welcome">Welcome Email</option>
+        <option value="confirmation">Confirmation Email</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="subject">Subject Line</label>
+      <input type="text" id="subject" name="subject" placeholder="Enter an attention-grabbing subject line (40-60 characters recommended)" required>
+      <div class="character-count"><span id="subjectCount">0</span> characters</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="preheader">Preheader Text</label>
+      <input type="text" id="preheader" name="preheader" placeholder="Brief preview text that appears after the subject line (85-100 characters recommended)">
+      <div class="character-count"><span id="preheaderCount">0</span> characters</div>
+      <small>This text appears in the inbox preview on most email clients</small>
+    </div>
+    
+    <div class="input-group">
+      <label for="emailPurpose">Primary Email Purpose</label>
+      <select id="emailPurpose" name="emailPurpose" required>
+        <option value="">Select purpose</option>
+        <option value="inform">Inform/Educate</option>
+        <option value="sell">Sell a Product/Service</option>
+        <option value="announce">Make an Announcement</option>
+        <option value="engage">Drive Engagement</option>
+        <option value="build_relationship">Build Relationship</option>
+        <option value="nurture">Nurture Leads</option>
+        <option value="invite">Invite to Event</option>
+        <option value="request">Request Feedback</option>
+        <option value="follow_up">Follow Up</option>
+        <option value="onboard">Onboard Users</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Content Elements</h3>
+    <div class="input-group">
+      <label for="mainMessage">Main Message</label>
+      <textarea id="mainMessage" name="mainMessage" placeholder="What is the primary message you want to communicate? Be clear and concise." rows="3" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="keyPoints">Key Points to Include</label>
+      <textarea id="keyPoints" name="keyPoints" placeholder="List the most important points you want to cover in the email (one per line)" rows="4" required></textarea>
+      <small>Include the most important information first</small>
+    </div>
+    
+    <div class="input-group">
+      <label for="callToAction">Primary Call to Action</label>
+      <input type="text" id="callToAction" name="callToAction" placeholder="What specific action do you want recipients to take? (e.g., 'Get Started Now', 'Shop the Sale')" required>
+    </div>
+    
+    <div class="input-group">
+      <label for="structure">Content Structure</label>
+      <select id="structure" name="structure">
+        <option value="">Select structure</option>
+        <option value="short_simple">Short & Simple (1-2 paragraphs)</option>
+        <option value="newsletter">Newsletter Format (Multiple Sections)</option>
+        <option value="storytelling">Storytelling Approach</option>
+        <option value="problem_solution">Problem-Solution Format</option>
+        <option value="listicle">List Format (5 Tips, 3 Reasons, etc.)</option>
+        <option value="announcement">Announcement Style</option>
+        <option value="personal">Personal Letter Format</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="visuals">Visual Elements</label>
+      <textarea id="visuals" name="visuals" placeholder="Describe any images, GIFs, videos, or other visual elements you want to include" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Audience & Personalization</h3>
+    <div class="input-group">
+      <label for="audience">Target Audience</label>
+      <textarea id="audience" name="audience" placeholder="Who is this email for? Describe your audience's demographics, interests, pain points, etc." rows="3" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="segmentation">Audience Segmentation</label>
+      <textarea id="segmentation" name="segmentation" placeholder="Are you targeting a specific segment? How is this email being tailored to this audience?" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="personalization">Personalization Elements</label>
+      <textarea id="personalization" name="personalization" placeholder="Specify any personalization beyond name (e.g., purchase history, location, behavior triggers)" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Tone & Style</h3>
+    <div class="input-group">
+      <label for="tone">Email Tone</label>
+      <select id="tone" name="tone" required>
+        <option value="">Select tone</option>
+        <option value="professional">Professional/Formal</option>
+        <option value="friendly">Friendly/Conversational</option>
+        <option value="enthusiastic">Enthusiastic/Energetic</option>
+        <option value="urgent">Urgent/Time-sensitive</option>
+        <option value="humorous">Humorous/Playful</option>
+        <option value="empathetic">Empathetic/Supportive</option>
+        <option value="authoritative">Authoritative/Expert</option>
+        <option value="inspirational">Inspirational/Motivational</option>
+        <option value="straightforward">Straightforward/Direct</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="brandVoice">Brand Voice Considerations</label>
+      <textarea id="brandVoice" name="brandVoice" placeholder="Any specific brand voice guidelines, phrases, or terminology to include or avoid" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="emailLength">Preferred Email Length</label>
+      <select id="emailLength" name="emailLength">
+        <option value="">Select length</option>
+        <option value="very_short">Very Short (50-100 words)</option>
+        <option value="short">Short (100-200 words)</option>
+        <option value="medium">Medium (200-350 words)</option>
+        <option value="long">Long (350-500 words)</option>
+        <option value="very_long">Very Long (500+ words)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Elements</h3>
+    <div class="input-group">
+      <label for="timing">Timing Context</label>
+      <textarea id="timing" name="timing" placeholder="Any time-sensitive context or specific timing for this email (e.g., seasonal, date-specific, triggered by user action)" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="urgency">Urgency Elements</label>
+      <textarea id="urgency" name="urgency" placeholder="Any time-limited offers, deadlines, or scarcity elements to include" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="socialProof">Social Proof Elements</label>
+      <textarea id="socialProof" name="socialProof" placeholder="Any testimonials, reviews, statistics, case studies, or other social proof to incorporate" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="legalNotes">Legal Compliance Notes</label>
+      <textarea id="legalNotes" name="legalNotes" placeholder="Any legal requirements or disclaimers that need to be included (e.g., GDPR, CAN-SPAM)" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Instructions</h3>
+    <div class="input-group">
+      <label for="specialInstructions">Special Instructions</label>
+      <textarea id="specialInstructions" name="specialInstructions" placeholder="Any additional context or special instructions for the AI" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="primary-button">Generate Email Campaign</button>
+    <button type="reset" class="secondary-button">Reset Form</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block template_guide %}
+<div class="template-guide">
+  <h2>Email Campaign Writing Guide</h2>
+  
+  <div class="guide-section">
+    <h3>Effective Email Structure</h3>
+    <ol>
+      <li><strong>Subject Line:</strong> Clear, compelling, and relevant to content (40-60 characters)</li>
+      <li><strong>Preheader:</strong> Preview text that complements the subject line (85-100 characters)</li>
+      <li><strong>Personalized Greeting:</strong> Address recipient by name when possible</li>
+      <li><strong>Opening Paragraph:</strong> Capture attention and establish relevance immediately</li>
+      <li><strong>Body Content:</strong> Deliver value with scannable, concise sections</li>
+      <li><strong>Primary CTA:</strong> Clear, action-oriented button or link</li>
+      <li><strong>Sign-off:</strong> Friendly closing with sender name/contact information</li>
+      <li><strong>P.S. (Optional):</strong> Secondary message or CTA that catches attention</li>
+      <li><strong>Footer:</strong> Required legal information and unsubscribe option</li>
+    </ol>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Subject Line Best Practices</h3>
+    <ul>
+      <li>Keep subject lines under 60 characters to prevent truncation</li>
+      <li>Create a sense of urgency or curiosity when appropriate</li>
+      <li>Use personalization when possible (name, location, behavior)</li>
+      <li>Avoid ALL CAPS, excessive punctuation (!!!), and spam trigger words</li>
+      <li>Be specific and deliver on the promise in the email content</li>
+      <li>A/B test different approaches to optimize open rates</li>
+      <li>Consider using emojis strategically, but don't overdo it</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Email Content Best Practices</h3>
+    <ul>
+      <li><strong>Mobile-First:</strong> Design with mobile readers in mind (shorter paragraphs, clear CTAs)</li>
+      <li><strong>Scannable Format:</strong> Use headings, bullet points, and short paragraphs</li>
+      <li><strong>Value-Focused:</strong> Emphasize benefits to the reader, not just features</li>
+      <li><strong>Personalization:</strong> Go beyond name to include relevant content based on behavior</li>
+      <li><strong>Conversational Tone:</strong> Write as if speaking to one person</li>
+      <li><strong>Clear Purpose:</strong> Each email should have one primary goal</li>
+      <li><strong>Visual Support:</strong> Use relevant images, but don't rely solely on them</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Call-to-Action Best Practices</h3>
+    <ul>
+      <li>Use action-oriented verbs that create urgency (Get, Start, Join, Claim)</li>
+      <li>Make CTAs stand out visually with buttons rather than text links</li>
+      <li>Focus on one primary CTA per email</li>
+      <li>Position the main CTA above the fold when possible</li>
+      <li>Make buttons large enough to tap easily on mobile (at least 44x44 pixels)</li>
+      <li>Use benefit-focused language that tells readers what they'll get</li>
+      <li>Add white space around CTAs to make them stand out</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Personalization Strategies</h3>
+    <div class="collapsible">
+      <div class="collapsible-header">Basic Personalization</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>First name in greeting and/or subject line</li>
+          <li>Company name or organization reference</li>
+          <li>Location-specific references</li>
+          <li>Reference to signup date or customer duration</li>
+          <li>Personalized sender name (from a specific team member)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Advanced Personalization</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Product/content recommendations based on past behavior</li>
+          <li>Dynamic content blocks that change based on user segments</li>
+          <li>Behavioral triggers (abandoned cart, viewed item, anniversary)</li>
+          <li>Lifecycle stage personalization (new user vs. long-time customer)</li>
+          <li>Purchase history references</li>
+          <li>Personalized offers based on previous engagement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Campaign Types and Specific Tips</h3>
+    <div class="collapsible">
+      <div class="collapsible-header">Newsletter</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Maintain consistent format and sending schedule</li>
+          <li>Include table of contents for longer newsletters</li>
+          <li>Feature 3-5 content pieces with clear section dividers</li>
+          <li>Focus on providing value, not just promoting products</li>
+          <li>Use section headers to aid scanning</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Promotional Emails</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Lead with the strongest offer or most compelling benefit</li>
+          <li>Create urgency with deadlines or limited availability</li>
+          <li>Include social proof to validate the offer</li>
+          <li>Make pricing and value proposition clear</li>
+          <li>Use action-oriented CTAs (Shop Now, Save Today, Get 25% Off)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Welcome Emails</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Thank the subscriber for joining</li>
+          <li>Set expectations for future communications</li>
+          <li>Deliver on signup promises (download, discount)</li>
+          <li>Introduce your brand's unique value proposition</li>
+          <li>Provide next steps or quick wins</li>
+          <li>Consider a welcome series rather than a single email</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Technical Considerations</h3>
+    <ul>
+      <li>Keep email width around 600px for best viewing across devices</li>
+      <li>Use web-safe fonts or fallbacks for custom fonts</li>
+      <li>Optimize images for fast loading (under 1MB total)</li>
+      <li>Include alt text for all images</li>
+      <li>Ensure enough text-to-image ratio to avoid spam filters</li>
+      <li>Always include a plain text version</li>
+      <li>Test rendering across multiple email clients and devices</li>
+      <li>Follow accessibility best practices (contrast, text size, structure)</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Character counters
+    const subject = document.getElementById('subject');
+    const subjectCount = document.getElementById('subjectCount');
+    const preheader = document.getElementById('preheader');
+    const preheaderCount = document.getElementById('preheaderCount');
+    
+    subject.addEventListener('input', function() {
+      const count = this.value.length;
+      subjectCount.textContent = count;
+      
+      if (count > 60) {
+        subjectCount.classList.add('too-long');
+        subjectCount.classList.remove('optimal');
+      } else if (count >= 40 && count <= 60) {
+        subjectCount.classList.add('optimal');
+        subjectCount.classList.remove('too-long');
+      } else {
+        subjectCount.classList.remove('optimal', 'too-long');
+      }
+    });
+    
+    preheader.addEventListener('input', function() {
+      const count = this.value.length;
+      preheaderCount.textContent = count;
+      
+      if (count > 100) {
+        preheaderCount.classList.add('too-long');
+        preheaderCount.classList.remove('optimal');
+      } else if (count >= 85 && count <= 100) {
+        preheaderCount.classList.add('optimal');
+        preheaderCount.classList.remove('too-long');
+      } else {
+        preheaderCount.classList.remove('optimal', 'too-long');
+      }
+    });
+    
+    // Dynamic recommendations based on campaign type
+    const campaignType = document.getElementById('campaignType');
+    const emailPurpose = document.getElementById('emailPurpose');
+    const tone = document.getElementById('tone');
+    
+    campaignType.addEventListener('change', function() {
+      switch(this.value) {
+        case 'newsletter':
+          emailPurpose.value = 'inform';
+          tone.value = 'friendly';
+          break;
+        case 'promotional':
+          emailPurpose.value = 'sell';
+          tone.value = 'enthusiastic';
+          break;
+        case 'announcement':
+          emailPurpose.value = 'announce';
+          tone.value = 'professional';
+          break;
+        case 'welcome':
+          emailPurpose.value = 'build_relationship';
+          tone.value = 'friendly';
+          break;
+        case 'event':
+          emailPurpose.value = 'invite';
+          tone.value = 'enthusiastic';
+          break;
+        case 'nurture':
+          emailPurpose.value = 'nurture';
+          tone.value = 'empathetic';
+          break;
+        case 'retention':
+          emailPurpose.value = 'engage';
+          tone.value = 'friendly';
+          break;
+      }
+    });
+    
+    // Initialize collapsible sections
+    const collapsibles = document.querySelectorAll('.collapsible-header');
+    collapsibles.forEach(collapsible => {
+      collapsible.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>
+{% endblock %} 

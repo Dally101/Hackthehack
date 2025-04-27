@@ -1,0 +1,331 @@
+{% extends "base_template.html" %}
+
+{% block title %}Create Advertisement{% endblock %}
+
+{% block content_form %}
+<form id="adForm" class="content-form">
+  <div class="form-section">
+    <h3>Campaign Basics</h3>
+    <div class="input-group">
+      <label for="adType">Advertisement Type</label>
+      <select id="adType" name="adType" required>
+        <option value="">Select ad type</option>
+        <option value="display">Display Ad</option>
+        <option value="search">Search Ad</option>
+        <option value="social">Social Media Ad</option>
+        <option value="video">Video Ad</option>
+        <option value="native">Native Ad</option>
+        <option value="audio">Audio Ad</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="platform">Platform/Channel</label>
+      <select id="platform" name="platform" required>
+        <option value="">Select platform</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="linkedin">LinkedIn</option>
+        <option value="google">Google</option>
+        <option value="youtube">YouTube</option>
+        <option value="tiktok">TikTok</option>
+        <option value="twitter">Twitter/X</option>
+        <option value="display_network">Display Network</option>
+        <option value="print">Print</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="campaignName">Campaign Name</label>
+      <input type="text" id="campaignName" name="campaignName" placeholder="Enter campaign name" required>
+    </div>
+    
+    <div class="input-group">
+      <label for="objective">Campaign Objective</label>
+      <select id="objective" name="objective" required>
+        <option value="">Select primary objective</option>
+        <option value="awareness">Brand Awareness</option>
+        <option value="consideration">Consideration</option>
+        <option value="conversion">Conversion/Sales</option>
+        <option value="retention">Retention</option>
+        <option value="lead">Lead Generation</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Target Audience</h3>
+    <div class="input-group">
+      <label for="targetAudience">Target Audience Demographics</label>
+      <textarea id="targetAudience" name="targetAudience" placeholder="Describe your target audience (age, gender, location, interests, etc.)" rows="3" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="painPoints">Audience Pain Points</label>
+      <textarea id="painPoints" name="painPoints" placeholder="What problems does your audience face that your product/service solves?" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Ad Content</h3>
+    <div class="input-group">
+      <label for="headline">Primary Headline/Title</label>
+      <input type="text" id="headline" name="headline" placeholder="Main headline (Keep it concise and attention-grabbing)" required>
+      <div class="character-count"><span id="headlineCount">0</span> characters</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="subheadline">Secondary Headline/Subtitle (if applicable)</label>
+      <input type="text" id="subheadline" name="subheadline" placeholder="Supporting headline or subtitle">
+      <div class="character-count"><span id="subheadlineCount">0</span> characters</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="bodyText">Body Copy</label>
+      <textarea id="bodyText" name="bodyText" placeholder="Main ad text" rows="4" required></textarea>
+      <div class="character-count"><span id="bodyTextCount">0</span> characters</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="cta">Call to Action</label>
+      <input type="text" id="cta" name="cta" placeholder="e.g., 'Shop Now', 'Learn More', 'Sign Up Today'" required>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Brand Elements</h3>
+    <div class="input-group">
+      <label for="brandTone">Brand Voice/Tone</label>
+      <select id="brandTone" name="brandTone">
+        <option value="">Select tone</option>
+        <option value="professional">Professional</option>
+        <option value="friendly">Friendly</option>
+        <option value="humorous">Humorous</option>
+        <option value="authoritative">Authoritative</option>
+        <option value="inspirational">Inspirational</option>
+        <option value="urgent">Urgent</option>
+        <option value="casual">Casual</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="usp">Unique Selling Proposition</label>
+      <textarea id="usp" name="usp" placeholder="What makes your offer unique and compelling?" rows="2" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="keyBenefits">Key Benefits (3-5)</label>
+      <textarea id="keyBenefits" name="keyBenefits" placeholder="List the main benefits of your product/service" rows="3" required></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Visual and Technical Elements</h3>
+    <div class="input-group">
+      <label for="visualDescription">Visual Elements Description</label>
+      <textarea id="visualDescription" name="visualDescription" placeholder="Describe the imagery, videos, or graphics you want to include" rows="3"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="landingPage">Landing Page URL</label>
+      <input type="url" id="landingPage" name="landingPage" placeholder="Where should the ad direct users?">
+    </div>
+    
+    <div class="input-group">
+      <label for="adSpecs">Ad Specifications Notes</label>
+      <textarea id="adSpecs" name="adSpecs" placeholder="Any specific size requirements, character limits, or format notes" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Information</h3>
+    <div class="input-group">
+      <label for="budget">Budget Range</label>
+      <input type="text" id="budget" name="budget" placeholder="Approximate budget for this advertisement">
+    </div>
+    
+    <div class="input-group">
+      <label for="timing">Campaign Timing</label>
+      <input type="text" id="timing" name="timing" placeholder="Expected start date, duration, or other timing information">
+    </div>
+    
+    <div class="input-group">
+      <label for="specialInstructions">Special Instructions</label>
+      <textarea id="specialInstructions" name="specialInstructions" placeholder="Any additional instructions or information" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="primary-button">Generate Advertisement</button>
+    <button type="reset" class="secondary-button">Reset Form</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block template_guide %}
+<div class="template-guide">
+  <h2>Advertisement Creation Guide</h2>
+  
+  <div class="guide-section">
+    <h3>Effective Ad Structure</h3>
+    <ul>
+      <li><strong>Hook:</strong> Capture attention immediately with a compelling headline</li>
+      <li><strong>Problem:</strong> Identify the pain point or need</li>
+      <li><strong>Solution:</strong> Present your product/service as the solution</li>
+      <li><strong>Benefits:</strong> Highlight key advantages</li>
+      <li><strong>Proof:</strong> Include social proof or evidence (when possible)</li>
+      <li><strong>CTA:</strong> End with a clear, action-oriented call to action</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Platform-Specific Best Practices</h3>
+    <div class="collapsible">
+      <div class="collapsible-header">Facebook/Instagram</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Keep text minimal in images (under 20% of image area)</li>
+          <li>Focus on visually compelling content</li>
+          <li>Use short, direct copy that works without sound</li>
+          <li>Optimal video length: 15-30 seconds</li>
+          <li>Include a clear CTA button</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Google Search</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Headline 1: Up to 30 characters</li>
+          <li>Headline 2: Up to 30 characters</li>
+          <li>Headline 3: Up to 30 characters</li>
+          <li>Description: Up to 90 characters</li>
+          <li>Include keywords in headlines</li>
+          <li>Focus on specificity and relevance</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">LinkedIn</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Use professional, benefit-focused language</li>
+          <li>Headline: Up to 150 characters</li>
+          <li>Descriptive text: Up to 2,000 characters</li>
+          <li>Focus on business value and professional outcomes</li>
+          <li>Use statistics and specific results</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Ad Copy Tips</h3>
+    <ul>
+      <li>Lead with the most compelling benefit</li>
+      <li>Use active voice and present tense</li>
+      <li>Address the reader directly using "you" and "your"</li>
+      <li>Create a sense of urgency or exclusivity when appropriate</li>
+      <li>Keep language simple and accessible</li>
+      <li>Use specific numbers and facts rather than generalizations</li>
+      <li>Focus on benefits, not just features</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Effective CTAs by Objective</h3>
+    <table class="guide-table">
+      <tr>
+        <th>Objective</th>
+        <th>Effective CTAs</th>
+      </tr>
+      <tr>
+        <td>Awareness</td>
+        <td>Learn More, Discover, Find Out</td>
+      </tr>
+      <tr>
+        <td>Consideration</td>
+        <td>See How, Watch Video, Request Info</td>
+      </tr>
+      <tr>
+        <td>Conversion</td>
+        <td>Buy Now, Shop Today, Get Started</td>
+      </tr>
+      <tr>
+        <td>Lead Generation</td>
+        <td>Sign Up, Download Guide, Free Trial</td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Character counters
+    const countCharacters = (inputId, counterId) => {
+      const input = document.getElementById(inputId);
+      const counter = document.getElementById(counterId);
+      
+      input.addEventListener('input', function() {
+        counter.textContent = this.value.length;
+      });
+    };
+    
+    countCharacters('headline', 'headlineCount');
+    countCharacters('subheadline', 'subheadlineCount');
+    countCharacters('bodyText', 'bodyTextCount');
+    
+    // Platform-specific recommendations
+    const platform = document.getElementById('platform');
+    const headline = document.getElementById('headline');
+    const bodyText = document.getElementById('bodyText');
+    
+    platform.addEventListener('change', function() {
+      const headlineLabel = document.querySelector('label[for="headline"]');
+      const bodyTextLabel = document.querySelector('label[for="bodyText"]');
+      
+      switch(this.value) {
+        case 'google':
+          headlineLabel.innerHTML = 'Primary Headline <small>(Recommended: up to 30 characters)</small>';
+          bodyTextLabel.innerHTML = 'Description <small>(Recommended: up to 90 characters)</small>';
+          break;
+        case 'facebook':
+        case 'instagram':
+          headlineLabel.innerHTML = 'Primary Headline <small>(Recommended: up to 40 characters)</small>';
+          bodyTextLabel.innerHTML = 'Body Copy <small>(Recommended: up to 125 characters)</small>';
+          break;
+        case 'linkedin':
+          headlineLabel.innerHTML = 'Primary Headline <small>(Recommended: up to 150 characters)</small>';
+          bodyTextLabel.innerHTML = 'Body Copy <small>(Recommended: up to 2000 characters)</small>';
+          break;
+        case 'twitter':
+          headlineLabel.innerHTML = 'Primary Headline/Tweet';
+          bodyTextLabel.innerHTML = 'Body Copy <small>(Recommended: keep under 280 characters total)</small>';
+          break;
+        default:
+          headlineLabel.innerHTML = 'Primary Headline/Title';
+          bodyTextLabel.innerHTML = 'Body Copy';
+      }
+    });
+    
+    // Initialize collapsible sections
+    const collapsibles = document.querySelectorAll('.collapsible-header');
+    collapsibles.forEach(collapsible => {
+      collapsible.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>
+{% endblock %} 

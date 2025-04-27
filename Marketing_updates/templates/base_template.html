@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Marketing Content Generator{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/export_styles.css') }}">
+    
+    <!-- Libraries for export functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- Custom export utilities -->
+    <script src="{{ url_for('static', filename='js/export_utils.js') }}"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .form-section h3 {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 1.3rem;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        input[type="text"], 
+        input[type="url"],
+        input[type="date"],
+        input[type="number"],
+        textarea, 
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .character-count {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .quote-attribution {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        .dateline-container {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .template-guide {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e1e1e1;
+        }
+        
+        .guide-section {
+            margin-bottom: 25px;
+        }
+        
+        .guide-section h3 {
+            color: #3498db;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .guide-table th, .guide-table td {
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+        }
+        
+        .guide-table th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        
+        .collapsible {
+            margin-bottom: 10px;
+        }
+        
+        .collapsible-header {
+            background-color: #f2f2f2;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .collapsible-header:after {
+            content: '+';
+            position: absolute;
+            right: 15px;
+            font-weight: bold;
+        }
+        
+        .collapsible-header.active:after {
+            content: '-';
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fff;
+            border-radius: 0 0 4px 4px;
+            padding: 0 15px;
+        }
+        
+        small {
+            color: #7f8c8d;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        /* Style for character counts */
+        .optimal {
+            color: #27ae60;
+        }
+        
+        .too-long {
+            color: #e74c3c;
+        }
+        
+        .too-short {
+            color: #f39c12;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .form-section {
+                padding: 15px;
+            }
+            
+            .dateline-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Fixed font for generated content and preview modal */
+        .result-content, #preview-body pre {
+            font-family: 'Segoe UI', Tahoma, sans-serif !important;
+            font-size: 1rem;
+            white-space: pre-wrap;
+        }
+    </style>
+    {% block additional_styles %}{% endblock %}
+</head>
+<body>
+    <!-- Preview & Export Modal -->
+    <div class="modal fade" id="previewExportModal" tabindex="-1" aria-labelledby="previewExportLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="previewExportLabel">Preview & Export</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="preview-body"><!-- injected content --></div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" id="export-md">Download .md</button>
+            <button class="btn btn-outline-secondary" id="export-txt">Download .txt</button>
+            <button class="btn btn-outline-secondary" id="export-pdf">Download .pdf</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Marketing AI Agent</h1>
+            <p>Generate professional marketing content using AI</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h5>Content Generation Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="content-form">
+                            <div class="mb-3">
+                                <label for="content-type" class="form-label">Content Type</label>
+                                <select class="form-select" id="content-type" name="content_type" required>
+                                    <option value="social media post">Social Media Post</option>
+                                    <option value="email">Email/Newsletter</option>
+                                    <option value="blog post">Blog Post</option>
+                                    <option value="press release">Press Release</option>
+                                    <option value="ad copy">Advertisement</option>
+                                    <option value="product description">Product Description</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="audience" class="form-label">Target Audience</label>
+                                <input type="text" class="form-control" id="audience" name="audience" 
+                                       placeholder="e.g., tech professionals, busy parents, small business owners" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tone" class="form-label">Tone</label>
+                                <select class="form-select" id="tone" name="tone" required>
+                                    <option value="professional">Professional</option>
+                                    <option value="casual">Casual</option>
+                                    <option value="enthusiastic">Enthusiastic</option>
+                                    <option value="formal">Formal</option>
+                                    <option value="friendly">Friendly</option>
+                                    <option value="informative">Informative</option>
+                                    <option value="persuasive">Persuasive</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="length" class="form-label">Length</label>
+                                <select class="form-select" id="length" name="length">
+                                    <option value="short">Short</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="long">Long</option>
+                                </select>
+                            </div>
+
+                            {% block content_form %}{% endblock %}
+
+                            <div class="mb-3">
+                                <label for="prompt" class="form-label">Instructions/Prompt</label>
+                                <textarea class="form-control" id="prompt" name="prompt" rows="4" 
+                                          placeholder="Write instructions for the AI, e.g., Create a social media post promoting our new eco-friendly product line" required></textarea>
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="save-content" name="save" value="true">
+                                <label class="form-check-label" for="save-content">Save generated content to file</label>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="button" id="preview-export-btn" class="btn btn-secondary">Preview & Export</button>
+                                <button class="btn btn-primary" type="submit">Generate Content</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                {% block template_guide %}{% endblock %}
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Prompt Templates</h5>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('social')">Social Media</button>
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('email')">Email</button>
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('blog')">Blog Post</button>
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('press')">Press Release</button>
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('ad')">Advertisement</button>
+                        <button class="btn btn-outline-secondary mb-2" onclick="loadTemplate('product')">Product Description</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Generating content... This may take a moment.</p>
+                </div>
+
+                <div class="card result-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Generated Content</h5>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary" onclick="copyContent()">Copy</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="downloadContent()">Download</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="result-metadata mb-3">
+                            <span class="badge bg-primary content-type-badge"></span>
+                            <span class="badge bg-secondary audience-badge"></span>
+                            <span class="badge bg-info tone-badge"></span>
+                            <span class="badge bg-dark length-badge"></span>
+                            <span class="badge bg-light text-dark timestamp-badge"></span>
+                        </div>
+                        <div class="result-content" id="result-content"></div>
+                    </div>
+                </div>
+                
+                {% block results_guidance %}{% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Azure AI Foundry | Based on <a href="https://github.com/Azure-Samples/get-started-with-ai-agents" target="_blank">Azure-Samples/get-started-with-ai-agents</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Event listener for form submission
+            document.getElementById('content-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                generateContent();
+            });
+
+            // Event listener for content type change to update template
+            document.getElementById('content-type').addEventListener('change', function() {
+                const contentType = this.value.split(' ')[0].toLowerCase();
+                loadTemplate(contentType);
+            });
+
+            // Load a default template
+            loadTemplate('social');
+        });
+
+        function generateContent() {
+            // Show loading spinner
+            document.querySelector('.loading').style.display = 'block';
+            document.querySelector('.result-card').style.display = 'none';
+
+            // Get form data
+            const form = document.getElementById('content-form');
+            const formData = new FormData(form);
+
+            // Send request to the server
+            fetch('/generate', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading spinner
+                document.querySelector('.loading').style.display = 'none';
+                
+                if (data.status === 'success') {
+                    // Display the result
+                    document.querySelector('.result-card').style.display = 'block';
+                    document.getElementById('result-content').textContent = data.content;
+                    
+                    // Update metadata badges
+                    document.querySelector('.content-type-badge').textContent = data.metadata.content_type;
+                    document.querySelector('.audience-badge').textContent = data.metadata.audience;
+                    document.querySelector('.tone-badge').textContent = data.metadata.tone;
+                    document.querySelector('.length-badge').textContent = data.metadata.length;
+                    
+                    // Format timestamp
+                    const timestamp = new Date(data.metadata.timestamp).toLocaleString();
+                    document.querySelector('.timestamp-badge').textContent = timestamp;
+                } else {
+                    // Display error
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                document.querySelector('.loading').style.display = 'none';
+                alert('Error generating content: ' + error);
+            });
+        }
+
+        function loadTemplate(contentType) {
+            fetch(`/templates/${contentType}`)
+                .then(response => response.json())
+                .then(data => {
+                    const promptField = document.getElementById('prompt');
+                    const audience = document.getElementById('audience').value || '{audience}';
+                    const tone = document.getElementById('tone').value || '{tone}';
+                    const contentTypeValue = document.getElementById('content-type').value || '{content_type}';
+                    
+                    let template = data.template;
+                    template = template.replace('{audience}', audience);
+                    template = template.replace('{tone}', tone);
+                    template = template.replace('{content_type}', contentTypeValue);
+                    
+                    promptField.value = template;
+                })
+                .catch(error => console.error('Error loading template:', error));
+        }
+
+        function copyContent() {
+            const content = document.getElementById('result-content').textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Content copied to clipboard!');
+            }, () => {
+                alert('Failed to copy content');
+            });
+        }
+
+        function downloadContent() {
+            const content = document.getElementById('result-content').textContent;
+            const contentType = document.querySelector('.content-type-badge').textContent;
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            const filename = `${contentType.replace(/\s+/g, '_')}_${timestamp}.txt`;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+
+    <script>
+        // Common functionality for all forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add preview button to all forms
+            const forms = document.querySelectorAll('form');
+            forms.forEach(function(form) {
+                // Get the form ID to determine template type
+                const formId = form.id;
+                let templateType = '';
+                
+                if (formId.includes('ad')) templateType = 'advertisement';
+                else if (formId.includes('product')) templateType = 'product';
+                else if (formId.includes('press')) templateType = 'press';
+                else if (formId.includes('email')) templateType = 'email';
+                else if (formId.includes('blog')) templateType = 'blog';
+                else if (formId.includes('social')) templateType = 'social';
+                
+                // Add preview button
+                const formActions = form.querySelector('.form-actions');
+                if (formActions) {
+                    const previewButton = document.createElement('button');
+                    previewButton.type = 'button';
+                    previewButton.className = 'preview-button';
+                    previewButton.textContent = 'Preview & Export';
+                    
+                    previewButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Collect all form data
+                        const formData = {};
+                        form.querySelectorAll('input, textarea, select').forEach(function(input) {
+                            if (input.name) {
+                                formData[input.name] = input.value;
+                            }
+                        });
+                        
+                        // Generate markdown from form data
+                        const markdown = window.exportUtils.toMarkdown(formData, templateType);
+                        
+                        // Show preview modal
+                        window.exportUtils.preview(markdown, templateType);
+                    });
+                    
+                    // Insert after the first button
+                    formActions.insertBefore(previewButton, formActions.children[1]);
+                }
+            });
+            
+            // Add autosave functionality to save form data to localStorage
+            function saveFormData() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(function(form) {
+                    const formId = form.id;
+                    const formData = {};
+                    
+                    form.querySelectorAll('input, textarea, select').forEach(function(input) {
+                        if (input.name && input.type !== 'submit' && input.type !== 'button') {
+                            formData[input.name] = input.value;
+                        }
+                    });
+                    
+                    localStorage.setItem('autosave_' + formId, JSON.stringify(formData));
+                });
+            }
+            
+            // Load autosaved data
+            function loadFormData() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(function(form) {
+                    const formId = form.id;
+                    const savedData = localStorage.getItem('autosave_' + formId);
+                    
+                    if (savedData) {
+                        const formData = JSON.parse(savedData);
+                        
+                        // Populate form fields
+                        Object.keys(formData).forEach(function(key) {
+                            const input = form.querySelector('[name="' + key + '"]');
+                            if (input) {
+                                input.value = formData[key];
+                                
+                                // Trigger change event for select elements
+                                if (input.tagName === 'SELECT') {
+                                    const event = new Event('change');
+                                    input.dispatchEvent(event);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Save form data when inputs change
+            document.querySelectorAll('input, textarea, select').forEach(function(input) {
+                input.addEventListener('change', saveFormData);
+                input.addEventListener('keyup', saveFormData);
+            });
+            
+            // Load saved form data on page load
+            loadFormData();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

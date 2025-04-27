@@ -1,0 +1,551 @@
+{% extends "base_template.html" %}
+
+{% block title %}Blog Post Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="post-type" class="form-label">Blog Post Type</label>
+    <select class="form-select" id="post-type" name="post_type">
+        <option value="how-to">How-To Guide</option>
+        <option value="listicle">List-Based Article</option>
+        <option value="case-study">Case Study</option>
+        <option value="thought-leadership">Thought Leadership</option>
+        <option value="industry-analysis">Industry Analysis</option>
+        <option value="product-review">Product/Service Review</option>
+        <option value="comparison">Comparison Post</option>
+        <option value="interview">Expert Interview</option>
+        <option value="tutorial">Tutorial/Step-by-Step</option>
+        <option value="opinion">Opinion/Editorial</option>
+        <option value="news">News Analysis</option>
+        <option value="roundup">Resource Roundup</option>
+        <option value="problem-solution">Problem-Solution</option>
+        <option value="faq">FAQ Post</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="blog-title" class="form-label">Blog Post Title</label>
+    <input type="text" class="form-control" id="blog-title" name="blog_title" 
+           placeholder="Enter your blog post title or title ideas">
+</div>
+
+<div class="mb-3">
+    <label for="target-keywords" class="form-label">Target Keywords/Phrases</label>
+    <textarea class="form-control" id="target-keywords" name="target_keywords" rows="2"
+              placeholder="Primary and secondary keywords to target (comma separated)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="post-purpose" class="form-label">Post Purpose/Goals</label>
+    <select class="form-select" id="post-purpose" name="post_purpose">
+        <option value="educate">Educate/Inform</option>
+        <option value="engagement">Drive Engagement</option>
+        <option value="brand-awareness">Increase Brand Awareness</option>
+        <option value="lead-generation">Generate Leads</option>
+        <option value="thought-leadership">Establish Thought Leadership</option>
+        <option value="product-awareness">Product/Service Awareness</option>
+        <option value="seo">Search Engine Optimization</option>
+        <option value="community-building">Community Building</option>
+        <option value="problem-solving">Problem Solving</option>
+        <option value="conversion">Drive Conversions</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="target-audience" class="form-label">Target Audience</label>
+    <textarea class="form-control" id="target-audience" name="target_audience" rows="2"
+              placeholder="Who is this blog post for? Include demographics, interests, pain points, etc."></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="target-funnel" class="form-label">Target Funnel Stage</label>
+    <select class="form-select" id="target-funnel" name="target_funnel">
+        <option value="awareness">Awareness</option>
+        <option value="consideration">Consideration</option>
+        <option value="decision">Decision</option>
+        <option value="retention">Retention/Loyalty</option>
+        <option value="advocacy">Advocacy</option>
+        <option value="multiple">Multiple Stages</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="tone" class="form-label">Content Tone</label>
+    <select class="form-select" id="tone" name="tone">
+        <option value="conversational">Conversational/Friendly</option>
+        <option value="professional">Professional/Formal</option>
+        <option value="authoritative">Authoritative/Expert</option>
+        <option value="enthusiastic">Enthusiastic</option>
+        <option value="humorous">Humorous</option>
+        <option value="inspirational">Inspirational</option>
+        <option value="educational">Educational</option>
+        <option value="empathetic">Empathetic</option>
+        <option value="persuasive">Persuasive</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="word-count" class="form-label">Target Word Count</label>
+    <select class="form-select" id="word-count" name="word_count">
+        <option value="500-750">Short (500-750 words)</option>
+        <option value="750-1200">Medium (750-1200 words)</option>
+        <option value="1200-1800">Long (1200-1800 words)</option>
+        <option value="1800-2500">Comprehensive (1800-2500 words)</option>
+        <option value="2500+">In-depth (2500+ words)</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="main-points" class="form-label">Main Points/Outline</label>
+    <textarea class="form-control" id="main-points" name="main_points" rows="4"
+              placeholder="Key sections or points to cover in the blog post (bullet points work well)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="introduction-approach" class="form-label">Introduction Approach</label>
+    <select class="form-select" id="introduction-approach" name="introduction_approach">
+        <option value="problem-focus">Problem-Focused</option>
+        <option value="statistic">Surprising Statistic</option>
+        <option value="story">Story/Anecdote</option>
+        <option value="question">Thought-Provoking Question</option>
+        <option value="quote">Quote or Expert View</option>
+        <option value="controversial">Controversial Statement</option>
+        <option value="direct">Direct and Concise</option>
+        <option value="scenario">Relatable Scenario</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="cta-type" class="form-label">Call-to-Action Type</label>
+    <select class="form-select" id="cta-type" name="cta_type">
+        <option value="comment">Encourage Comments/Discussion</option>
+        <option value="subscription">Subscribe to Newsletter</option>
+        <option value="related-content">Read Related Content</option>
+        <option value="download">Download Resource</option>
+        <option value="consultation">Request Consultation/Demo</option>
+        <option value="trial">Free Trial/Sample</option>
+        <option value="purchase">Make a Purchase</option>
+        <option value="share">Share the Post</option>
+        <option value="contact">Contact Us</option>
+        <option value="none">No Specific CTA</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="cta-details" class="form-label">Call-to-Action Details</label>
+    <textarea class="form-control" id="cta-details" name="cta_details" rows="2"
+              placeholder="Specific details about your desired call-to-action (what you want readers to do)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="visual-elements" class="form-label">Visual Elements to Include</label>
+    <select class="form-select" id="visual-elements" name="visual_elements" multiple>
+        <option value="featured-image">Featured Image</option>
+        <option value="section-images">Section Images</option>
+        <option value="screenshots">Screenshots</option>
+        <option value="infographics">Infographics</option>
+        <option value="data-charts">Data Charts/Graphs</option>
+        <option value="videos">Embedded Videos</option>
+        <option value="slideshare">SlideShare/Presentations</option>
+        <option value="memes">Memes/GIFs</option>
+        <option value="diagrams">Diagrams/Process Flows</option>
+        <option value="quotes">Quote Graphics</option>
+        <option value="social-embeds">Social Media Embeds</option>
+    </select>
+    <div class="form-text">Hold Ctrl/Cmd to select multiple options</div>
+</div>
+
+<div class="mb-3">
+    <label for="visual-guidance" class="form-label">Visual Element Guidance</label>
+    <textarea class="form-control" id="visual-guidance" name="visual_guidance" rows="2"
+              placeholder="Description of desired visuals, image style, or specific visual content to include"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="data-sources" class="form-label">Data/Statistics Sources</label>
+    <textarea class="form-control" id="data-sources" name="data_sources" rows="2"
+              placeholder="URLs or descriptions of data sources, research, or statistics to reference"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="internal-links" class="form-label">Internal Links to Include</label>
+    <textarea class="form-control" id="internal-links" name="internal_links" rows="2"
+              placeholder="URLs of your own content to link within this post"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="external-links" class="form-label">External Links to Include</label>
+    <textarea class="form-control" id="external-links" name="external_links" rows="2"
+              placeholder="URLs of external resources to reference (studies, tools, etc.)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="seo-meta-description" class="form-label">SEO Meta Description</label>
+    <textarea class="form-control" id="seo-meta-description" name="seo_meta_description" rows="2"
+              placeholder="Suggested meta description for search engines (150-160 characters)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="competitor-examples" class="form-label">Competitor Examples</label>
+    <textarea class="form-control" id="competitor-examples" name="competitor_examples" rows="2"
+              placeholder="URLs of competitor content to reference (what to emulate or improve upon)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="content-angle" class="form-label">Unique Content Angle</label>
+    <textarea class="form-control" id="content-angle" name="content_angle" rows="2"
+              placeholder="What makes your approach to this topic unique or valuable?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="heading-structure" class="form-label">Heading Structure Preference</label>
+    <select class="form-select" id="heading-structure" name="heading_structure">
+        <option value="question-based">Question-Based Headings</option>
+        <option value="how-to-steps">How-To/Step Headings</option>
+        <option value="benefit-driven">Benefit-Driven Headings</option>
+        <option value="numerical">Numerical/List Headings</option>
+        <option value="problem-solution">Problem-Solution Headings</option>
+        <option value="descriptive">Simple Descriptive Headings</option>
+        <option value="curiosity">Curiosity-Driven Headings</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="examples-to-include" class="form-label">Examples to Include</label>
+    <textarea class="form-control" id="examples-to-include" name="examples_to_include" rows="2"
+              placeholder="Real-world examples, case studies, or scenarios to incorporate"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="expert-quotes" class="form-label">Expert Quotes/Insights</label>
+    <textarea class="form-control" id="expert-quotes" name="expert_quotes" rows="2"
+              placeholder="Quotes from experts, thought leaders, or research to include"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="brand-voice" class="form-label">Brand Voice Guidelines</label>
+    <textarea class="form-control" id="brand-voice" name="brand_voice" rows="2"
+              placeholder="Specific brand voice elements, phrases, or messaging guidelines to follow"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="content-channels" class="form-label">Distribution Channels</label>
+    <select class="form-select" id="content-channels" name="content_channels" multiple>
+        <option value="website">Website/Blog</option>
+        <option value="linkedin">LinkedIn</option>
+        <option value="twitter">Twitter</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="medium">Medium</option>
+        <option value="email">Email Newsletter</option>
+        <option value="reddit">Reddit</option>
+        <option value="quora">Quora</option>
+        <option value="industry-sites">Industry Publications</option>
+    </select>
+    <div class="form-text">Hold Ctrl/Cmd to select multiple options (for distribution planning)</div>
+</div>
+
+<div class="mb-3">
+    <label for="special-instructions" class="form-label">Special Instructions</label>
+    <textarea class="form-control" id="special-instructions" name="special_instructions" rows="2"
+              placeholder="Any additional specifications or requirements"></textarea>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Blog Post Best Practices</h5>
+    </div>
+    <div class="card-body">
+        <p>Blog post type strategies:</p>
+        <ul>
+            <li><strong>How-To Guide:</strong> Clear steps, numbered sections, practical examples, troubleshooting tips, visual demonstrations</li>
+            <li><strong>Listicle:</strong> Numbered items, consistent formatting, frontload value, scannable structure, compelling rationales</li>
+            <li><strong>Case Study:</strong> Challenge-solution-result format, quantifiable outcomes, contextual background, implementation details</li>
+            <li><strong>Thought Leadership:</strong> Original perspective, industry trends analysis, forward-looking insights, expert stance</li>
+            <li><strong>Industry Analysis:</strong> Data-backed claims, multiple sources, balanced viewpoint, actionable takeaways</li>
+            <li><strong>Product Review:</strong> Objective criteria, pros/cons, practical use cases, comparison elements, personal experience</li>
+            <li><strong>Comparison Post:</strong> Fair assessment, clear criteria, visual comparison tables, specific use cases</li>
+            <li><strong>Expert Interview:</strong> Engaging questions, formatted responses, expert credentials, added context</li>
+            <li><strong>Tutorial:</strong> Sequential steps, screenshots/visuals, expected outcomes, prerequisites, troubleshooting</li>
+            <li><strong>Opinion/Editorial:</strong> Clear position, supporting evidence, acknowledgment of counterpoints, personal voice</li>
+            <li><strong>News Analysis:</strong> Factual reporting, context, implications, expert quotes, balanced perspective</li>
+            <li><strong>Resource Roundup:</strong> Curated selections, clear categories, brief descriptions, diverse options</li>
+            <li><strong>Problem-Solution:</strong> Comprehensive problem description, multiple solution approaches, implementation guidance</li>
+            <li><strong>FAQ Post:</strong> Common questions, concise answers, logical organization, additional resources</li>
+        </ul>
+
+        <p>SEO best practices:</p>
+        <ul>
+            <li>Include target keyword in title, first paragraph, and at least one H2</li>
+            <li>Use variations of your keyword throughout (LSI keywords)</li>
+            <li>Optimize meta description with keyword and clear value proposition</li>
+            <li>Create descriptive, keyword-rich URLs</li>
+            <li>Use header tags (H1, H2, H3) in hierarchical order</li>
+            <li>Optimize images with descriptive filenames and alt text</li>
+            <li>Include both internal and external links</li>
+            <li>Aim for comprehensive content that covers the topic fully</li>
+            <li>Use schema markup when appropriate</li>
+            <li>Include multimedia elements to increase engagement</li>
+        </ul>
+
+        <p>Content structure best practices:</p>
+        <ul>
+            <li><strong>Title:</strong> Clear, compelling, keyword-rich, 50-60 characters</li>
+            <li><strong>Introduction:</strong> Hook reader attention, establish relevance, preview content, 100-150 words</li>
+            <li><strong>Body:</strong> Logical flow, subheadings every 300 words, varied paragraph lengths (1-4 sentences)</li>
+            <li><strong>Conclusion:</strong> Summarize key points, provide next steps, reinforce main takeaway</li>
+            <li>Use transition phrases between sections for flow</li>
+            <li>Break up text with visuals every 300-400 words</li>
+            <li>Use bullet points and numbered lists for scannable content</li>
+            <li>Create white space with short paragraphs and section breaks</li>
+            <li>Structure content to answer user search intent</li>
+        </ul>
+
+        <p>Introduction approaches:</p>
+        <ul>
+            <li><strong>Problem-Focused:</strong> Identify pain point, build tension, hint at solution</li>
+            <li><strong>Surprising Statistic:</strong> Lead with compelling data point that challenges assumptions</li>
+            <li><strong>Story/Anecdote:</strong> Begin with relevant narrative to humanize topic</li>
+            <li><strong>Thought-Provoking Question:</strong> Engage reader with self-reflection or curiosity</li>
+            <li><strong>Quote or Expert View:</strong> Leverage authority to establish importance</li>
+            <li><strong>Controversial Statement:</strong> Challenge conventional wisdom to grab attention</li>
+            <li><strong>Direct and Concise:</strong> Immediately state purpose and value proposition</li>
+            <li><strong>Relatable Scenario:</strong> Describe common situation reader has experienced</li>
+            <li>Keep introduction under 10% of total content length</li>
+            <li>Establish relevance quickly in first 2-3 sentences</li>
+        </ul>
+
+        <p>Visual element best practices:</p>
+        <ul>
+            <li>Use high-quality, relevant images that enhance the content</li>
+            <li>Create custom graphics for complex concepts</li>
+            <li>Optimize image file sizes for fast loading (under 200KB)</li>
+            <li>Include data visualizations for statistics and numbers</li>
+            <li>Use consistent styling across all visuals</li>
+            <li>Ensure proper attribution for all external visuals</li>
+            <li>Add descriptive alt text for all images</li>
+            <li>Consider mobile display when designing/selecting visuals</li>
+            <li>Use visuals to break up text and create scannable content</li>
+            <li>Caption images with additional context or insights</li>
+        </ul>
+
+        <p>Call-to-Action strategies:</p>
+        <ul>
+            <li><strong>Comment:</strong> Ask specific question, invite personal experiences</li>
+            <li><strong>Subscription:</strong> Highlight value of future content, exclusive benefits</li>
+            <li><strong>Related Content:</strong> Suggest logical next reads, create content journey</li>
+            <li><strong>Download:</strong> Emphasize additional value, simple exchange process</li>
+            <li><strong>Consultation:</strong> Low-pressure offer, clear benefit statement</li>
+            <li><strong>Trial:</strong> Risk-free language, simple process, clear timeframe</li>
+            <li><strong>Purchase:</strong> Value justification, urgency elements, simple process</li>
+            <li><strong>Share:</strong> Make it easy, provide sharing prompts or templates</li>
+            <li><strong>Contact:</strong> Specific reason to reach out, easy process</li>
+            <li>Use action-oriented language ("Get," "Start," "Join")</li>
+            <li>Create visual prominence for primary CTA</li>
+            <li>Align CTA with content context and user journey stage</li>
+        </ul>
+
+        <p>Content depth guidelines:</p>
+        <ul>
+            <li><strong>Short (500-750 words):</strong> Focused, single-topic content, news items, quick tips</li>
+            <li><strong>Medium (750-1200 words):</strong> Standard blog articles, basic explanations, simplified guides</li>
+            <li><strong>Long (1200-1800 words):</strong> Comprehensive overviews, detailed guides, multi-faceted topics</li>
+            <li><strong>Comprehensive (1800-2500 words):</strong> In-depth analysis, complete guides, substantial research</li>
+            <li><strong>In-depth (2500+ words):</strong> Ultimate guides, extensive research, complete topic coverage</li>
+            <li>Match content depth to topic complexity and user search intent</li>
+            <li>Focus on quality over arbitrary word count targets</li>
+            <li>Use the depth required to cover the topic comprehensively</li>
+            <li>Longer content typically performs better for SEO but must maintain quality</li>
+        </ul>
+
+        <p>Engagement strategies:</p>
+        <ul>
+            <li>Ask questions throughout content to prompt reflection</li>
+            <li>Include interactive elements when possible (polls, calculators)</li>
+            <li>Encourage sharing with social sharing buttons and prompts</li>
+            <li>Use storytelling elements to create emotional connection</li>
+            <li>Add personal anecdotes or experiences to humanize content</li>
+            <li>Reference reader pain points and aspirations directly</li>
+            <li>Create content gaps that encourage further exploration</li>
+            <li>Format content for easy scanning (subheadings, bullets, bold text)</li>
+            <li>Use conversational tone with appropriate "you" language</li>
+            <li>End with thought-provoking question or discussion prompt</li>
+        </ul>
+
+        <p>Heading structure guidance:</p>
+        <ul>
+            <li><strong>Question-Based:</strong> Frame sections as questions readers are asking</li>
+            <li><strong>How-To/Step:</strong> Numbered or sequential process headings</li>
+            <li><strong>Benefit-Driven:</strong> Focus on outcomes and value in each section</li>
+            <li><strong>Numerical:</strong> List format with numbered items (5 Ways to...)</li>
+            <li><strong>Problem-Solution:</strong> Identify problem, then provide solution</li>
+            <li><strong>Descriptive:</strong> Simple, clear descriptions of section content</li>
+            <li><strong>Curiosity:</strong> Create information gaps that intrigue readers</li>
+            <li>Keep headings under 60 characters when possible</li>
+            <li>Include keywords in H2s but avoid keyword stuffing</li>
+            <li>Maintain consistent formatting across headings</li>
+            <li>Use parallel structure for similar section types</li>
+        </ul>
+
+        <p>Content distribution optimization:</p>
+        <ul>
+            <li><strong>Website/Blog:</strong> SEO-optimized, comprehensive content, internal linking</li>
+            <li><strong>LinkedIn:</strong> Professional tone, industry insights, data-focused</li>
+            <li><strong>Twitter:</strong> Concise takeaways, engaging questions, visual quotes</li>
+            <li><strong>Facebook:</strong> Conversation starters, emotional connection, community focus</li>
+            <li><strong>Instagram:</strong> Strong visuals, stories format, lifestyle connection</li>
+            <li><strong>Medium:</strong> Well-formatted, thoughtful perspectives, engagement with community</li>
+            <li><strong>Email:</strong> Personalized context, segmented content, clear value proposition</li>
+            <li><strong>Reddit:</strong> Valuable insights, authentic participation, no self-promotion</li>
+            <li><strong>Quora:</strong> Question-focused, helpful responses, subtle authority building</li>
+            <li><strong>Industry Publications:</strong> Original research, authoritative stance, unique angles</li>
+            <li>Create platform-specific versions rather than identical cross-posting</li>
+            <li>Consider creating content snippets for different platforms</li>
+        </ul>
+
+        <p>Technical considerations:</p>
+        <ul>
+            <li>Optimize for mobile viewing (responsive images, scannable paragraphs)</li>
+            <li>Use proper heading hierarchy (H1 → H2 → H3)</li>
+            <li>Check readability score (aim for grade 6-8 for general audiences)</li>
+            <li>Keep paragraphs short (3-4 sentences maximum)</li>
+            <li>Utilize transition words for better flow (25-30% of sentences)</li>
+            <li>Include schema markup for better SERP display</li>
+            <li>Test all links before publishing</li>
+            <li>Compress images for faster loading</li>
+            <li>Use descriptive anchor text for links</li>
+            <li>Include table of contents for longer posts (1500+ words)</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for blog post
+    const defaultTemplate = "Create a {post_type} blog post with the following specifications:\n\n" +
+                           "Title: {blog_title}\n" +
+                           "Target keywords: {target_keywords}\n" +
+                           "Post purpose: {post_purpose}\n" +
+                           "Target audience: {target_audience}\n" +
+                           "Target funnel stage: {target_funnel}\n" +
+                           "Tone: {tone}\n" +
+                           "Word count: {word_count}\n\n" +
+                           "Main points/outline:\n{main_points}\n\n" +
+                           "Introduction approach: {introduction_approach}\n" +
+                           "CTA type: {cta_type}\n" +
+                           "CTA details: {cta_details}\n\n" +
+                           "Visual elements: {visual_elements}\n" +
+                           "Visual guidance: {visual_guidance}\n\n" +
+                           "Data sources: {data_sources}\n" +
+                           "Internal links: {internal_links}\n" +
+                           "External links: {external_links}\n\n" +
+                           "SEO meta description: {seo_meta_description}\n" +
+                           "Competitor examples: {competitor_examples}\n" +
+                           "Unique content angle: {content_angle}\n\n" +
+                           "Heading structure preference: {heading_structure}\n" +
+                           "Examples to include: {examples_to_include}\n" +
+                           "Expert quotes: {expert_quotes}\n\n" +
+                           "Brand voice guidelines: {brand_voice}\n" +
+                           "Distribution channels: {content_channels}\n" +
+                           "Special instructions: {special_instructions}\n\n" +
+                           "Please create a complete blog post following best practices for blog content, SEO, and reader engagement.";
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('post-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('blog-title').addEventListener('input', updatePromptFromFields);
+    document.getElementById('target-keywords').addEventListener('input', updatePromptFromFields);
+    document.getElementById('post-purpose').addEventListener('change', updatePromptFromFields);
+    document.getElementById('target-audience').addEventListener('input', updatePromptFromFields);
+    document.getElementById('target-funnel').addEventListener('change', updatePromptFromFields);
+    document.getElementById('tone').addEventListener('change', updatePromptFromFields);
+    document.getElementById('word-count').addEventListener('change', updatePromptFromFields);
+    document.getElementById('main-points').addEventListener('input', updatePromptFromFields);
+    document.getElementById('introduction-approach').addEventListener('change', updatePromptFromFields);
+    document.getElementById('cta-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('cta-details').addEventListener('input', updatePromptFromFields);
+    document.getElementById('visual-elements').addEventListener('change', updatePromptFromFields);
+    document.getElementById('visual-guidance').addEventListener('input', updatePromptFromFields);
+    document.getElementById('data-sources').addEventListener('input', updatePromptFromFields);
+    document.getElementById('internal-links').addEventListener('input', updatePromptFromFields);
+    document.getElementById('external-links').addEventListener('input', updatePromptFromFields);
+    document.getElementById('seo-meta-description').addEventListener('input', updatePromptFromFields);
+    document.getElementById('competitor-examples').addEventListener('input', updatePromptFromFields);
+    document.getElementById('content-angle').addEventListener('input', updatePromptFromFields);
+    document.getElementById('heading-structure').addEventListener('change', updatePromptFromFields);
+    document.getElementById('examples-to-include').addEventListener('input', updatePromptFromFields);
+    document.getElementById('expert-quotes').addEventListener('input', updatePromptFromFields);
+    document.getElementById('brand-voice').addEventListener('input', updatePromptFromFields);
+    document.getElementById('content-channels').addEventListener('change', updatePromptFromFields);
+    document.getElementById('special-instructions').addEventListener('input', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const postType = document.getElementById('post-type').value || "how-to";
+        const blogTitle = document.getElementById('blog-title').value || "{blog_title}";
+        const targetKeywords = document.getElementById('target-keywords').value || "{target_keywords}";
+        const postPurpose = document.getElementById('post-purpose').value || "educate";
+        const targetAudience = document.getElementById('target-audience').value || "{target_audience}";
+        const targetFunnel = document.getElementById('target-funnel').value || "awareness";
+        const tone = document.getElementById('tone').value || "conversational";
+        const wordCount = document.getElementById('word-count').value || "750-1200";
+        const mainPoints = document.getElementById('main-points').value || "{main_points}";
+        const introductionApproach = document.getElementById('introduction-approach').value || "problem-focus";
+        const ctaType = document.getElementById('cta-type').value || "comment";
+        const ctaDetails = document.getElementById('cta-details').value || "{cta_details}";
+        
+        // Handle multi-select for visual elements
+        let visualElements = Array.from(document.getElementById('visual-elements').selectedOptions).map(option => option.value);
+        visualElements = visualElements.length > 0 ? visualElements.join(', ') : "{visual_elements}";
+        
+        const visualGuidance = document.getElementById('visual-guidance').value || "{visual_guidance}";
+        const dataSources = document.getElementById('data-sources').value || "{data_sources}";
+        const internalLinks = document.getElementById('internal-links').value || "{internal_links}";
+        const externalLinks = document.getElementById('external-links').value || "{external_links}";
+        const seoMetaDescription = document.getElementById('seo-meta-description').value || "{seo_meta_description}";
+        const competitorExamples = document.getElementById('competitor-examples').value || "{competitor_examples}";
+        const contentAngle = document.getElementById('content-angle').value || "{content_angle}";
+        const headingStructure = document.getElementById('heading-structure').value || "descriptive";
+        const examplesTInclude = document.getElementById('examples-to-include').value || "{examples_to_include}";
+        const expertQuotes = document.getElementById('expert-quotes').value || "{expert_quotes}";
+        const brandVoice = document.getElementById('brand-voice').value || "{brand_voice}";
+        
+        // Handle multi-select for content channels
+        let contentChannels = Array.from(document.getElementById('content-channels').selectedOptions).map(option => option.value);
+        contentChannels = contentChannels.length > 0 ? contentChannels.join(', ') : "{content_channels}";
+        
+        const specialInstructions = document.getElementById('special-instructions').value || "{special_instructions}";
+        
+        let template = defaultTemplate;
+        template = template.replace('{post_type}', postType);
+        template = template.replace('{blog_title}', blogTitle);
+        template = template.replace('{target_keywords}', targetKeywords);
+        template = template.replace('{post_purpose}', postPurpose);
+        template = template.replace('{target_audience}', targetAudience);
+        template = template.replace('{target_funnel}', targetFunnel);
+        template = template.replace('{tone}', tone);
+        template = template.replace('{word_count}', wordCount);
+        template = template.replace('{main_points}', mainPoints);
+        template = template.replace('{introduction_approach}', introductionApproach);
+        template = template.replace('{cta_type}', ctaType);
+        template = template.replace('{cta_details}', ctaDetails);
+        template = template.replace('{visual_elements}', visualElements);
+        template = template.replace('{visual_guidance}', visualGuidance);
+        template = template.replace('{data_sources}', dataSources);
+        template = template.replace('{internal_links}', internalLinks);
+        template = template.replace('{external_links}', externalLinks);
+        template = template.replace('{seo_meta_description}', seoMetaDescription);
+        template = template.replace('{competitor_examples}', competitorExamples);
+        template = template.replace('{content_angle}', contentAngle);
+        template = template.replace('{heading_structure}', headingStructure);
+        template = template.replace('{examples_to_include}', examplesTInclude);
+        template = template.replace('{expert_quotes}', expertQuotes);
+        template = template.replace('{brand_voice}', brandVoice);
+        template = template.replace('{content_channels}', contentChannels);
+        template = template.replace('{special_instructions}', specialInstructions);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

@@ -1,0 +1,296 @@
+{% extends "base_template.html" %}
+
+{% block title %}Create Press Release{% endblock %}
+
+{% block content_form %}
+<form id="pressReleaseForm" class="content-form">
+  <div class="form-section">
+    <h3>Release Information</h3>
+    <div class="input-group">
+      <label for="releaseType">Press Release Type</label>
+      <select id="releaseType" name="releaseType" required>
+        <option value="">Select release type</option>
+        <option value="product_launch">Product Launch</option>
+        <option value="company_news">Company News/Announcement</option>
+        <option value="event">Event Announcement</option>
+        <option value="partnership">Partnership/Collaboration</option>
+        <option value="award">Award/Recognition</option>
+        <option value="executive">Executive Appointment</option>
+        <option value="financial">Financial Results</option>
+        <option value="crisis">Crisis Management</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="headline">Headline</label>
+      <input type="text" id="headline" name="headline" placeholder="Main headline (65-80 characters ideal)" required>
+      <div class="character-count"><span id="headlineCount">0</span> characters</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="subheadline">Subheadline (Optional)</label>
+      <input type="text" id="subheadline" name="subheadline" placeholder="Additional context or details">
+    </div>
+    
+    <div class="input-group">
+      <label for="dateline">Dateline</label>
+      <div class="dateline-container">
+        <input type="text" id="location" name="location" placeholder="City, State/Country" required>
+        <input type="date" id="releaseDate" name="releaseDate" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>First Paragraph (Lead)</h3>
+    <div class="input-group">
+      <label for="lead">Lead Paragraph</label>
+      <textarea id="lead" name="lead" placeholder="First paragraph with the most important information (who, what, when, where, why)" rows="4" required></textarea>
+      <small>Include the 5 W's: Who, What, When, Where and Why in the first paragraph.</small>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Body Content</h3>
+    <div class="input-group">
+      <label for="bodyText">Body Paragraphs</label>
+      <textarea id="bodyText" name="bodyText" placeholder="Main content of the press release with additional details, context, and supporting information" rows="8" required></textarea>
+      <small>Provide more detailed information, supporting facts, and context. Include relevant quotes if available.</small>
+    </div>
+    
+    <div class="input-group">
+      <label for="quote1">Primary Quote</label>
+      <textarea id="quote1" name="quote1" placeholder="Quote from key company representative" rows="3"></textarea>
+      <div class="quote-attribution">
+        <input type="text" id="quoteName1" name="quoteName1" placeholder="Name">
+        <input type="text" id="quoteTitle1" name="quoteTitle1" placeholder="Title/Position">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label for="quote2">Secondary Quote (Optional)</label>
+      <textarea id="quote2" name="quote2" placeholder="Additional quote (customer, partner, etc.)" rows="3"></textarea>
+      <div class="quote-attribution">
+        <input type="text" id="quoteName2" name="quoteName2" placeholder="Name">
+        <input type="text" id="quoteTitle2" name="quoteTitle2" placeholder="Title/Position">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Additional Elements</h3>
+    <div class="input-group">
+      <label for="boilerplate">Company Boilerplate</label>
+      <textarea id="boilerplate" name="boilerplate" placeholder="Standard company description that appears at the end of every press release" rows="3" required></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="callToAction">Call to Action</label>
+      <textarea id="callToAction" name="callToAction" placeholder="What action should readers take after reading this press release?" rows="2"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="contactInfo">Media Contact Information</label>
+      <textarea id="contactInfo" name="contactInfo" placeholder="Name, email, phone number of media contact person" rows="3" required></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Supplementary Information</h3>
+    <div class="input-group">
+      <label for="additionalResources">Additional Resources</label>
+      <textarea id="additionalResources" name="additionalResources" placeholder="Links to images, videos, product pages, or other relevant resources" rows="3"></textarea>
+    </div>
+    
+    <div class="input-group">
+      <label for="notes">Additional Notes for AI</label>
+      <textarea id="notes" name="notes" placeholder="Any additional information or special instructions for the AI" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="primary-button">Generate Press Release</button>
+    <button type="reset" class="secondary-button">Reset Form</button>
+  </div>
+</form>
+{% endblock %}
+
+{% block template_guide %}
+<div class="template-guide">
+  <h2>Press Release Writing Guide</h2>
+  
+  <div class="guide-section">
+    <h3>Press Release Structure</h3>
+    <ol>
+      <li><strong>Headline:</strong> Clear, concise, and newsworthy title that summarizes the announcement</li>
+      <li><strong>Dateline:</strong> City, State/Country and date of release</li>
+      <li><strong>Lead Paragraph:</strong> Covers the 5 W's (Who, What, When, Where, Why)</li>
+      <li><strong>Body:</strong> Additional details, background, and supporting information</li>
+      <li><strong>Quotes:</strong> Comments from key stakeholders to add credibility and perspective</li>
+      <li><strong>Boilerplate:</strong> Standard company description</li>
+      <li><strong>Contact Information:</strong> Media contact details</li>
+    </ol>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Writing Tips</h3>
+    <ul>
+      <li>Write in the third person (avoid "we" and "our")</li>
+      <li>Use an inverted pyramid style (most important information first)</li>
+      <li>Keep paragraphs short (2-4 sentences)</li>
+      <li>Use clear, straightforward language without jargon</li>
+      <li>Include direct quotes from key stakeholders</li>
+      <li>Maintain a neutral, factual tone</li>
+      <li>Avoid excessive adjectives and promotional language</li>
+      <li>Aim for 400-500 words total (one page)</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Headline Best Practices</h3>
+    <ul>
+      <li>Keep headlines under 80 characters</li>
+      <li>Use active voice</li>
+      <li>Include your company name for brand visibility</li>
+      <li>Highlight the news value (what's new, different, or important)</li>
+      <li>Be specific rather than clever or vague</li>
+      <li>Avoid excessive punctuation, all caps, or exclamation points</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Quote Guidelines</h3>
+    <ul>
+      <li>Include 1-2 quotes from relevant company representatives</li>
+      <li>Quotes should add insight, not repeat information</li>
+      <li>Keep quotes concise (1-3 sentences)</li>
+      <li>Ensure quotes sound natural and conversational</li>
+      <li>Use quotes to convey vision, strategy, or emotional elements</li>
+      <li>Consider including quotes from partners, customers, or industry experts</li>
+    </ul>
+  </div>
+  
+  <div class="guide-section">
+    <h3>Press Release Types</h3>
+    <div class="collapsible">
+      <div class="collapsible-header">Product Launch</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Focus on product features, benefits, and unique selling points</li>
+          <li>Include pricing and availability information</li>
+          <li>Explain how the product solves a problem or meets a need</li>
+          <li>Use quotes from product developers or company executives</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Partnership/Collaboration</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Clearly explain the nature of the partnership</li>
+          <li>Highlight mutual benefits for both organizations</li>
+          <li>Include quotes from representatives of both companies</li>
+          <li>Explain how customers/users will benefit</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="collapsible">
+      <div class="collapsible-header">Company Milestone/Achievement</div>
+      <div class="collapsible-content">
+        <ul>
+          <li>Provide context for why the achievement matters</li>
+          <li>Include specific numbers or metrics when possible</li>
+          <li>Connect the achievement to the company's broader mission</li>
+          <li>Include quotes that express gratitude and future vision</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Character counter for headline
+    const headline = document.getElementById('headline');
+    const headlineCount = document.getElementById('headlineCount');
+    
+    headline.addEventListener('input', function() {
+      const count = this.value.length;
+      headlineCount.textContent = count;
+      
+      // Visual feedback based on optimal headline length
+      if (count > 100) {
+        headlineCount.classList.add('too-long');
+        headlineCount.classList.remove('optimal', 'too-short');
+      } else if (count >= 65 && count <= 80) {
+        headlineCount.classList.add('optimal');
+        headlineCount.classList.remove('too-long', 'too-short');
+      } else if (count < 40) {
+        headlineCount.classList.add('too-short');
+        headlineCount.classList.remove('optimal', 'too-long');
+      } else {
+        headlineCount.classList.remove('optimal', 'too-long', 'too-short');
+      }
+    });
+    
+    // Set today's date as default
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    
+    const formattedToday = yyyy + '-' + mm + '-' + dd;
+    document.getElementById('releaseDate').value = formattedToday;
+    
+    // Initialize collapsible sections
+    const collapsibles = document.querySelectorAll('.collapsible-header');
+    collapsibles.forEach(collapsible => {
+      collapsible.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+    
+    // Dynamically change guidance based on press release type
+    const releaseType = document.getElementById('releaseType');
+    const lead = document.getElementById('lead');
+    
+    releaseType.addEventListener('change', function() {
+      const leadLabel = document.querySelector('label[for="lead"]');
+      let placeholder = "First paragraph with the most important information (who, what, when, where, why)";
+      
+      switch(this.value) {
+        case 'product_launch':
+          leadLabel.innerHTML = 'Lead Paragraph <small>(Focus on product innovation and market impact)</small>';
+          placeholder += "\n\nExample: [Company Name] today announced the launch of [Product Name], a [brief description] designed to [solve problem/meet need]. Available [when] at [price point], [Product Name] offers [key benefit] for [target audience].";
+          break;
+        case 'partnership':
+          leadLabel.innerHTML = 'Lead Paragraph <small>(Highlight collaboration benefits)</small>';
+          placeholder += "\n\nExample: [Company Name] and [Partner Company] today announced a strategic partnership to [brief description of partnership]. This collaboration will [primary benefit] for [target audience] starting [timeframe].";
+          break;
+        case 'event':
+          leadLabel.innerHTML = 'Lead Paragraph <small>(Event details and significance)</small>';
+          placeholder += "\n\nExample: [Company Name] will host [Event Name], a [type of event] focused on [topic/theme], on [date] at [location]. The event will bring together [participants] to [purpose of event].";
+          break;
+        default:
+          leadLabel.innerHTML = 'Lead Paragraph';
+      }
+      
+      lead.placeholder = placeholder;
+    });
+  });
+</script>
+{% endblock %} 

@@ -1,0 +1,350 @@
+{% extends "base_template.html" %}
+
+{% block title %}Social Media Content Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="platform" class="form-label">Platform</label>
+    <select class="form-select" id="platform" name="platform">
+        <option value="linkedin">LinkedIn</option>
+        <option value="twitter">Twitter/X</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="tiktok">TikTok</option>
+        <option value="youtube">YouTube</option>
+        <option value="pinterest">Pinterest</option>
+        <option value="threads">Threads</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="content-type" class="form-label">Content Type</label>
+    <select class="form-select" id="content-type" name="content_type">
+        <option value="text-post">Text Post</option>
+        <option value="image-post">Image Post</option>
+        <option value="carousel">Carousel</option>
+        <option value="video">Video Script</option>
+        <option value="story">Story</option>
+        <option value="poll">Poll</option>
+        <option value="event">Event</option>
+        <option value="job-posting">Job Posting</option>
+        <option value="product-launch">Product Launch</option>
+        <option value="company-update">Company Update</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="main-topic" class="form-label">Main Topic/Theme</label>
+    <textarea class="form-control" id="main-topic" name="main_topic" rows="2"
+              placeholder="What is the main subject or message of this post?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="key-message" class="form-label">Key Message</label>
+    <textarea class="form-control" id="key-message" name="key_message" rows="2"
+              placeholder="Core message you want to convey (1-2 sentences)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="tone" class="form-label">Tone</label>
+    <select class="form-select" id="tone" name="tone">
+        <option value="professional">Professional</option>
+        <option value="conversational">Conversational/Casual</option>
+        <option value="enthusiastic">Enthusiastic</option>
+        <option value="authoritative">Authoritative</option>
+        <option value="humorous">Humorous</option>
+        <option value="inspirational">Inspirational</option>
+        <option value="educational">Educational</option>
+        <option value="urgent">Urgent/Time-sensitive</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="target-audience" class="form-label">Target Audience</label>
+    <input type="text" class="form-control" id="target-audience" name="target_audience" 
+           placeholder="Who specifically are you targeting with this post?">
+</div>
+
+<div class="mb-3">
+    <label for="audience-relationship" class="form-label">Audience Relationship</label>
+    <select class="form-select" id="audience-relationship" name="audience_relationship">
+        <option value="cold">Cold (New audience)</option>
+        <option value="warm">Warm (Aware but not engaged)</option>
+        <option value="hot">Hot (Engaged followers)</option>
+        <option value="customers">Existing Customers</option>
+        <option value="mixed">Mixed</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="post-goal" class="form-label">Post Goal</label>
+    <select class="form-select" id="post-goal" name="post_goal">
+        <option value="awareness">Brand Awareness</option>
+        <option value="engagement">Engagement</option>
+        <option value="traffic">Drive Traffic</option>
+        <option value="leads">Generate Leads</option>
+        <option value="sales">Drive Sales</option>
+        <option value="retention">Customer Retention</option>
+        <option value="community">Community Building</option>
+        <option value="thought-leadership">Thought Leadership</option>
+        <option value="recruitment">Recruitment</option>
+        <option value="education">Education</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="visual-description" class="form-label">Visual Description</label>
+    <textarea class="form-control" id="visual-description" name="visual_description" rows="2"
+              placeholder="Describe the image(s) or visual elements that should accompany this post"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="hashtags" class="form-label">Hashtag Strategy</label>
+    <select class="form-select" id="hashtag-strategy" name="hashtag_strategy">
+        <option value="popular">Popular Industry Hashtags</option>
+        <option value="niche">Niche/Targeted Hashtags</option>
+        <option value="branded">Branded Hashtags</option>
+        <option value="trending">Trending Hashtags</option>
+        <option value="mixed">Mixed Approach</option>
+        <option value="minimal">Minimal (1-3 Hashtags)</option>
+        <option value="none">No Hashtags</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="suggested-hashtags" class="form-label">Suggested Hashtags</label>
+    <textarea class="form-control" id="suggested-hashtags" name="suggested_hashtags" rows="2"
+              placeholder="Specific hashtags to include (optional)"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="call-to-action" class="form-label">Call-to-Action</label>
+    <input type="text" class="form-control" id="call-to-action" name="call_to_action" 
+           placeholder="What action do you want readers to take? (like, comment, share, click link, etc.)">
+</div>
+
+<div class="mb-3">
+    <label for="link-to-include" class="form-label">Link to Include</label>
+    <input type="text" class="form-control" id="link-to-include" name="link_to_include" 
+           placeholder="URL to include in the post (if applicable)">
+</div>
+
+<div class="mb-3">
+    <label for="posting-timing" class="form-label">Optimal Posting Time</label>
+    <select class="form-select" id="posting-timing" name="posting_timing">
+        <option value="morning">Morning (8-10 AM)</option>
+        <option value="midday">Midday (11 AM-1 PM)</option>
+        <option value="afternoon">Afternoon (2-4 PM)</option>
+        <option value="evening">Evening (5-7 PM)</option>
+        <option value="night">Night (8-10 PM)</option>
+        <option value="custom">Custom (specify in special instructions)</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="character-count" class="form-label">Character Count</label>
+    <select class="form-select" id="character-count" name="character_count">
+        <option value="short">Short (Under 100 characters)</option>
+        <option value="medium">Medium (100-200 characters)</option>
+        <option value="long">Long (200-500 characters)</option>
+        <option value="detailed">Detailed (500+ characters)</option>
+        <option value="platform-optimized">Platform-Optimized</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="engagement-question" class="form-label">Engagement Question</label>
+    <input type="text" class="form-control" id="engagement-question" name="engagement_question" 
+           placeholder="Question to encourage comments or engagement (optional)">
+</div>
+
+<div class="mb-3">
+    <label for="special-instructions" class="form-label">Special Instructions</label>
+    <textarea class="form-control" id="special-instructions" name="special_instructions" rows="2"
+              placeholder="Any additional specifications or requirements"></textarea>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Social Media Best Practices</h5>
+    </div>
+    <div class="card-body">
+        <p>Platform-specific best practices:</p>
+        <ul>
+            <li><strong>LinkedIn:</strong> Professional tone, industry insights, company updates, longer text format (1300 characters max in feed), business audience, weekdays during business hours</li>
+            <li><strong>Twitter/X:</strong> Concise (280 characters), timely content, multiple posts per day, hashtags (1-2), conversational tone, questions, polls</li>
+            <li><strong>Facebook:</strong> Mix of media types, community building, personal stories, moderate post frequency, video prioritized by algorithm</li>
+            <li><strong>Instagram:</strong> High-quality visuals, up to 30 hashtags, stories for time-sensitive content, carousel posts for education, grid aesthetics</li>
+            <li><strong>TikTok:</strong> Short entertaining videos, authentic tone, trending sounds/challenges, educational content, younger audience</li>
+            <li><strong>YouTube:</strong> Detailed video scripts, search-optimized titles/descriptions, calls for subscription, longer content format</li>
+            <li><strong>Pinterest:</strong> Vertical visuals (2:3 ratio), keyword-rich descriptions, seasonal content, inspirational/educational focus</li>
+            <li><strong>Threads:</strong> Conversational, text-focused, community building, minimal hashtags, authentic voice</li>
+        </ul>
+
+        <p>Content type strategies:</p>
+        <ul>
+            <li><strong>Text Post:</strong> Clear value, concise phrasing, one main idea, relevant emoji usage, proper formatting</li>
+            <li><strong>Image Post:</strong> High-quality visuals, text overlay for key points, brand consistency, emotional connection</li>
+            <li><strong>Carousel:</strong> Progressive story/information flow, numbered indicators, complete message in first slide, cohesive design</li>
+            <li><strong>Video Script:</strong> Hook in first 3 seconds, clear structure, captions for accessibility, optimal platform length</li>
+            <li><strong>Story:</strong> Vertical format, interactive elements (polls, questions), urgency, personality, behind-the-scenes content</li>
+            <li><strong>Poll:</strong> Clear question, balanced options, follow-up engagement plan, conversation starter</li>
+            <li><strong>Event:</strong> Complete details (what, when, where), clear value proposition, registration steps, reminders</li>
+            <li><strong>Job Posting:</strong> Role highlights, company culture, clear requirements, application instructions, employee testimonials</li>
+            <li><strong>Product Launch:</strong> Problem-solution format, key features, social proof, limited-time offers, next steps</li>
+            <li><strong>Company Update:</strong> Narrative structure, human element, future vision, community impact, celebrations</li>
+        </ul>
+
+        <p>Engagement optimization:</p>
+        <ul>
+            <li>Include a question to encourage comments</li>
+            <li>Use the "hook, story, offer" framework for compelling content</li>
+            <li>Incorporate timely or trending topics when relevant</li>
+            <li>Share authentic behind-the-scenes content or personal anecdotes</li>
+            <li>Create content that sparks emotion (inspiration, surprise, curiosity)</li>
+            <li>Use power words that trigger emotional responses</li>
+            <li>Highlight community successes and user-generated content</li>
+            <li>Develop content themes or series to build anticipation</li>
+        </ul>
+
+        <p>Visual elements:</p>
+        <ul>
+            <li>Use high-contrast, eye-catching imagery that stops the scroll</li>
+            <li>Maintain consistent brand colors, fonts, and visual identity</li>
+            <li>Include human faces to increase engagement</li>
+            <li>Ensure text overlays are legible (recommended 20% text to 80% image ratio)</li>
+            <li>Use motion (video, GIFs, animations) to increase attention</li>
+            <li>Consider accessibility: alt text, captions, color contrast</li>
+            <li>Follow platform-specific image dimensions and specifications</li>
+            <li>Create custom graphics for quotes, statistics, and key messages</li>
+        </ul>
+
+        <p>Hashtag best practices:</p>
+        <ul>
+            <li><strong>Popular hashtags:</strong> High reach potential but more competition (#marketing, #business)</li>
+            <li><strong>Niche hashtags:</strong> More targeted, better engagement rate (#contentmarketingstrategy)</li>
+            <li><strong>Branded hashtags:</strong> Build recognition and collect UGC (#yourbrandname)</li>
+            <li><strong>Trending hashtags:</strong> Temporarily boosted visibility if relevant to your content</li>
+            <li><strong>Platform recommendations:</strong>
+                <ul>
+                    <li>LinkedIn: 3-5 relevant hashtags</li>
+                    <li>Twitter: 1-2 strategic hashtags</li>
+                    <li>Instagram: Up to 30 (mix of sizes, often in first comment)</li>
+                    <li>Facebook: Minimal (1-2) or none</li>
+                    <li>TikTok: Mix of trending and niche (3-5)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>Call-to-action strategies:</p>
+        <ul>
+            <li>Use clear, direct action verbs (Click, Download, Share, Comment)</li>
+            <li>Create urgency with time-limited offers</li>
+            <li>Make the next step obvious and easy to complete</li>
+            <li>Ask directly for the engagement you want ("Double tap if you agree")</li>
+            <li>Use one primary CTA per post (avoid multiple competing actions)</li>
+            <li>Test different CTA placements (beginning, middle, end)</li>
+            <li>Provide a compelling reason WHY they should take action</li>
+            <li>Consider using directional cues pointing to action buttons</li>
+        </ul>
+
+        <p>Timing strategies:</p>
+        <ul>
+            <li>Schedule content when your audience is most active (check analytics)</li>
+            <li>Consider time zones if targeting global audiences</li>
+            <li>Post 30-60 minutes before peak activity times</li>
+            <li>Test different posting times and analyze performance</li>
+            <li>Adjust timing based on day of week (weekdays vs. weekends)</li>
+            <li>Plan around industry events or relevant holidays</li>
+            <li>Consider posting during commuting hours for professional content</li>
+            <li>Be ready to engage and respond within the first hour after posting</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for social media content
+    const defaultTemplate = "Create a social media post for {platform} with the following specifications:\n\n" +
+                           "Content type: {content_type}\n" +
+                           "Main topic/theme: {main_topic}\n" +
+                           "Key message: {key_message}\n\n" +
+                           "Target audience: {target_audience}\n" +
+                           "Audience relationship: {audience_relationship}\n" +
+                           "Tone: {tone}\n" +
+                           "Post goal: {post_goal}\n\n" +
+                           "Visual description: {visual_description}\n" +
+                           "Hashtag strategy: {hashtag_strategy}\n" +
+                           "Suggested hashtags: {suggested_hashtags}\n\n" +
+                           "Call-to-action: {call_to_action}\n" +
+                           "Link to include: {link_to_include}\n" +
+                           "Engagement question: {engagement_question}\n\n" +
+                           "Optimal posting time: {posting_timing}\n" +
+                           "Character count: {character_count}\n\n" +
+                           "Special instructions: {special_instructions}\n\n" +
+                           "Please ensure the content follows best practices for {platform}, is engaging, and aligned with the specified goal.";
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('platform').addEventListener('change', updatePromptFromFields);
+    document.getElementById('content-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('main-topic').addEventListener('input', updatePromptFromFields);
+    document.getElementById('key-message').addEventListener('input', updatePromptFromFields);
+    document.getElementById('tone').addEventListener('change', updatePromptFromFields);
+    document.getElementById('target-audience').addEventListener('input', updatePromptFromFields);
+    document.getElementById('audience-relationship').addEventListener('change', updatePromptFromFields);
+    document.getElementById('post-goal').addEventListener('change', updatePromptFromFields);
+    document.getElementById('visual-description').addEventListener('input', updatePromptFromFields);
+    document.getElementById('hashtag-strategy').addEventListener('change', updatePromptFromFields);
+    document.getElementById('suggested-hashtags').addEventListener('input', updatePromptFromFields);
+    document.getElementById('call-to-action').addEventListener('input', updatePromptFromFields);
+    document.getElementById('link-to-include').addEventListener('input', updatePromptFromFields);
+    document.getElementById('posting-timing').addEventListener('change', updatePromptFromFields);
+    document.getElementById('character-count').addEventListener('change', updatePromptFromFields);
+    document.getElementById('engagement-question').addEventListener('input', updatePromptFromFields);
+    document.getElementById('special-instructions').addEventListener('input', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const platform = document.getElementById('platform').value || "linkedin";
+        const contentType = document.getElementById('content-type').value || "text-post";
+        const mainTopic = document.getElementById('main-topic').value || "{main_topic}";
+        const keyMessage = document.getElementById('key-message').value || "{key_message}";
+        const tone = document.getElementById('tone').value || "professional";
+        const targetAudience = document.getElementById('target-audience').value || "{target_audience}";
+        const audienceRelationship = document.getElementById('audience-relationship').value || "warm";
+        const postGoal = document.getElementById('post-goal').value || "engagement";
+        const visualDescription = document.getElementById('visual-description').value || "{visual_description}";
+        const hashtagStrategy = document.getElementById('hashtag-strategy').value || "mixed";
+        const suggestedHashtags = document.getElementById('suggested-hashtags').value || "{suggested_hashtags}";
+        const callToAction = document.getElementById('call-to-action').value || "{call_to_action}";
+        const linkToInclude = document.getElementById('link-to-include').value || "{link_to_include}";
+        const postingTiming = document.getElementById('posting-timing').value || "midday";
+        const characterCount = document.getElementById('character-count').value || "platform-optimized";
+        const engagementQuestion = document.getElementById('engagement-question').value || "{engagement_question}";
+        const specialInstructions = document.getElementById('special-instructions').value || "{special_instructions}";
+        
+        let template = defaultTemplate;
+        template = template.replace('{platform}', platform);
+        template = template.replace('{content_type}', contentType);
+        template = template.replace('{main_topic}', mainTopic);
+        template = template.replace('{key_message}', keyMessage);
+        template = template.replace('{tone}', tone);
+        template = template.replace('{target_audience}', targetAudience);
+        template = template.replace('{audience_relationship}', audienceRelationship);
+        template = template.replace('{post_goal}', postGoal);
+        template = template.replace('{visual_description}', visualDescription);
+        template = template.replace('{hashtag_strategy}', hashtagStrategy);
+        template = template.replace('{suggested_hashtags}', suggestedHashtags);
+        template = template.replace('{call_to_action}', callToAction);
+        template = template.replace('{link_to_include}', linkToInclude);
+        template = template.replace('{posting_timing}', postingTiming);
+        template = template.replace('{character_count}', characterCount);
+        template = template.replace('{engagement_question}', engagementQuestion);
+        template = template.replace('{special_instructions}', specialInstructions);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 

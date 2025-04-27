@@ -1,0 +1,80 @@
+{% extends "base_template.html" %}
+
+{% block title %}Marketing AI Agent{% endblock %}
+
+{% block content_form %}
+<div class="text-center mb-5">
+    <h2 class="mb-3">Welcome to the Marketing AI Agent</h2>
+    <p class="lead">Choose a template to generate marketing content using AI</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    <!-- Social Media Post Card -->
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Social Media Post</h5>
+                <p class="card-text">Generate engaging content for social media platforms including LinkedIn, Twitter, Facebook, Instagram, and TikTok.</p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">Platform-optimized content</li>
+                    <li class="list-group-item">Automatic hashtag suggestions</li>
+                    <li class="list-group-item">Call-to-action options</li>
+                </ul>
+                <a href="/templates/social_media_post" class="btn btn-primary">Create Social Media Post</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Email Campaign Card -->
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Email Campaign</h5>
+                <p class="card-text">Create effective email campaigns for newsletters, promotions, announcements, and more.</p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">Subject line optimization</li>
+                    <li class="list-group-item">Audience-targeted content</li>
+                    <li class="list-group-item">Call-to-action strategies</li>
+                </ul>
+                <a href="/templates/email_campaign" class="btn btn-primary">Create Email Campaign</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Blog Post Card -->
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Blog Post</h5>
+                <p class="card-text">Generate comprehensive blog posts with SEO optimization and engaging content.</p>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">Multiple post formats</li>
+                    <li class="list-group-item">SEO keyword integration</li>
+                    <li class="list-group-item">Content structure guidance</li>
+                </ul>
+                <a href="/templates/blog_post" class="btn btn-primary">Create Blog Post</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Getting Started</h5>
+    </div>
+    <div class="card-body">
+        <ol>
+            <li>Select a marketing content type from the cards above</li>
+            <li>Fill in the template form with your specific requirements</li>
+            <li>Click "Generate Content" to create your marketing content using AI</li>
+            <li>Review, copy, or download the generated content</li>
+            <li>Optionally save the content for future reference</li>
+        </ol>
+        <p class="mb-0">This application uses Azure AI Foundry to power advanced AI content generation capabilities.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block template_guide %}{% endblock %}
+
+{% block custom_scripts %}{% endblock %} 

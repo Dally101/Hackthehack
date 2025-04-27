@@ -1,0 +1,321 @@
+{% extends "base_template.html" %}
+
+{% block title %}Email Content Generator{% endblock %}
+
+{% block content_form %}
+<div class="mb-3">
+    <label for="email-type" class="form-label">Email Type</label>
+    <select class="form-select" id="email-type" name="email_type">
+        <option value="newsletter">Newsletter</option>
+        <option value="promotional">Promotional</option>
+        <option value="welcome">Welcome Email</option>
+        <option value="announcement">Announcement</option>
+        <option value="product-update">Product Update</option>
+        <option value="event-invitation">Event Invitation</option>
+        <option value="follow-up">Follow-up Email</option>
+        <option value="onboarding">Onboarding Series</option>
+        <option value="survey">Survey/Feedback Request</option>
+        <option value="re-engagement">Re-engagement Campaign</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="subject-line" class="form-label">Subject Line Ideas</label>
+    <input type="text" class="form-control" id="subject-line" name="subject_line" 
+           placeholder="Provide ideas for the email subject line">
+</div>
+
+<div class="mb-3">
+    <label for="preview-text" class="form-label">Preview Text</label>
+    <input type="text" class="form-control" id="preview-text" name="preview_text" 
+           placeholder="Text that appears after the subject line in inbox (35-90 characters)">
+</div>
+
+<div class="mb-3">
+    <label for="sender-info" class="form-label">Sender Information</label>
+    <input type="text" class="form-control" id="sender-info" name="sender_info" 
+           placeholder="Who is the email from? (company name, department, person name)">
+</div>
+
+<div class="mb-3">
+    <label for="main-topic" class="form-label">Main Topic/Purpose</label>
+    <textarea class="form-control" id="main-topic" name="main_topic" rows="2"
+              placeholder="What is the main purpose or topic of this email?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="key-points" class="form-label">Key Points</label>
+    <textarea class="form-control" id="key-points" name="key_points" rows="3"
+              placeholder="What are the main points or sections you want to include?"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="target-audience" class="form-label">Target Audience</label>
+    <input type="text" class="form-control" id="target-audience" name="target_audience" 
+           placeholder="Who is receiving this email? Be specific about the audience segment.">
+</div>
+
+<div class="mb-3">
+    <label for="audience-relationship" class="form-label">Audience Relationship</label>
+    <select class="form-select" id="audience-relationship" name="audience_relationship">
+        <option value="new-subscriber">New Subscriber</option>
+        <option value="existing-customer">Existing Customer</option>
+        <option value="lead">Lead/Prospect</option>
+        <option value="inactive">Inactive Customer</option>
+        <option value="internal">Internal/Team Member</option>
+        <option value="partner">Partner/Vendor</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="tone" class="form-label">Tone</label>
+    <select class="form-select" id="tone" name="tone">
+        <option value="friendly">Friendly/Conversational</option>
+        <option value="professional">Professional</option>
+        <option value="authoritative">Authoritative</option>
+        <option value="urgent">Urgent</option>
+        <option value="educational">Educational</option>
+        <option value="humorous">Humorous</option>
+        <option value="empathetic">Empathetic</option>
+        <option value="formal">Formal</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="target-length" class="form-label">Target Length</label>
+    <select class="form-select" id="target-length" name="target_length">
+        <option value="very-short">Very Short (100-200 words)</option>
+        <option value="short">Short (200-350 words)</option>
+        <option value="medium">Medium (350-500 words)</option>
+        <option value="long">Long (500-750 words)</option>
+        <option value="very-long">Very Long (750+ words)</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="cta-primary" class="form-label">Primary Call-to-Action</label>
+    <input type="text" class="form-control" id="cta-primary" name="cta_primary" 
+           placeholder="Main action you want recipients to take (with button text if applicable)">
+</div>
+
+<div class="mb-3">
+    <label for="cta-secondary" class="form-label">Secondary Call-to-Action (Optional)</label>
+    <input type="text" class="form-control" id="cta-secondary" name="cta_secondary" 
+           placeholder="Alternative or additional action recipients can take">
+</div>
+
+<div class="mb-3">
+    <label for="images-description" class="form-label">Images Description</label>
+    <textarea class="form-control" id="images-description" name="images_description" rows="2"
+              placeholder="Describe any images that should be included and where"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="links-to-include" class="form-label">Links to Include</label>
+    <textarea class="form-control" id="links-to-include" name="links_to_include" rows="2"
+              placeholder="Specific URLs or content to link to in the email"></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="personalization" class="form-label">Personalization Elements</label>
+    <select class="form-select" id="personalization" name="personalization">
+        <option value="basic">Basic (First Name)</option>
+        <option value="moderate">Moderate (Name, Company, Role)</option>
+        <option value="advanced">Advanced (Behavioral/Historical Data)</option>
+        <option value="none">None</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="timing-context" class="form-label">Timing/Context</label>
+    <input type="text" class="form-control" id="timing-context" name="timing_context" 
+           placeholder="Any specific timing, season, event related to this email?">
+</div>
+
+<div class="mb-3">
+    <label for="special-instructions" class="form-label">Special Instructions</label>
+    <textarea class="form-control" id="special-instructions" name="special_instructions" rows="2"
+              placeholder="Any additional specifications or requirements"></textarea>
+</div>
+{% endblock %}
+
+{% block template_guide %}
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5>Email Marketing Best Practices</h5>
+    </div>
+    <div class="card-body">
+        <p>Email type-specific recommendations:</p>
+        <ul>
+            <li><strong>Newsletter:</strong> Clear section headers, scannable format, content variety, consistent publication schedule</li>
+            <li><strong>Promotional:</strong> Clear value proposition, sense of urgency, prominent CTA, benefit-focused language</li>
+            <li><strong>Welcome Email:</strong> Show appreciation, set expectations, introduce key features/benefits, immediate value</li>
+            <li><strong>Announcement:</strong> Clear headline, supporting details, excitement-building language, actionable next steps</li>
+            <li><strong>Product Update:</strong> Benefit-first approach, visual demonstrations, "how to use" information</li>
+            <li><strong>Event Invitation:</strong> Date/time/location prominence, clear value, RSVP mechanism, reminder sequence</li>
+            <li><strong>Follow-up:</strong> Reference previous interaction, provide added value, clear next steps</li>
+            <li><strong>Onboarding:</strong> Step-by-step guidance, bite-sized information, progressive complexity, immediate wins</li>
+            <li><strong>Survey:</strong> Brief explanation of purpose/impact, estimated completion time, incentive if applicable</li>
+            <li><strong>Re-engagement:</strong> Acknowledge absence, provide compelling reason to return, special offer</li>
+        </ul>
+
+        <p>Subject line best practices:</p>
+        <ul>
+            <li>Keep subject lines under 60 characters to prevent truncation</li>
+            <li>Front-load important keywords and action words</li>
+            <li>Create a sense of urgency or curiosity without using clickbait</li>
+            <li>Personalize when appropriate (first name, location, behavior)</li>
+            <li>A/B test different approaches (question vs. statement, emoji vs. plain text)</li>
+            <li>Avoid spam trigger words and excessive punctuation/capitalization</li>
+            <li>Maintain consistency with email content (avoid bait-and-switch)</li>
+        </ul>
+
+        <p>Preview text optimization:</p>
+        <ul>
+            <li>Complement the subject line rather than repeating it</li>
+            <li>Use 35-90 characters to expand on the subject line's promise</li>
+            <li>Include a call-to-action or value proposition</li>
+            <li>Consider including personalization elements</li>
+            <li>Create curiosity to encourage opens</li>
+            <li>Don't waste space with "View in browser" or similar utility text</li>
+        </ul>
+        
+        <p>Email content structure:</p>
+        <ul>
+            <li><strong>Header:</strong> Clear branding, recognizable sender, navigation if needed</li>
+            <li><strong>Opening:</strong> Personalized greeting, purpose statement, value proposition</li>
+            <li><strong>Body:</strong> Scannable sections, visual hierarchy, digestible paragraphs (3-4 lines max)</li>
+            <li><strong>CTA:</strong> Visually distinct, action-oriented language, clear value exchange</li>
+            <li><strong>Footer:</strong> Contact information, unsubscribe option, social links, legal requirements</li>
+        </ul>
+
+        <p>Design and readability:</p>
+        <ul>
+            <li>Use a responsive design that works on all devices (60% of emails are read on mobile)</li>
+            <li>Maintain a clear visual hierarchy with headings, subheadings, and whitespace</li>
+            <li>Use web-safe fonts or fallbacks for custom fonts</li>
+            <li>Ensure sufficient contrast between text and background colors</li>
+            <li>Optimize images for quick loading (under 1MB total email size)</li>
+            <li>Include ALT text for all images for accessibility</li>
+            <li>Use a maximum width of 600-700px for main content</li>
+            <li>Place important content and CTAs "above the fold"</li>
+        </ul>
+
+        <p>Personalization strategies:</p>
+        <ul>
+            <li><strong>Basic:</strong> Name personalization in greeting and occasionally in body text</li>
+            <li><strong>Moderate:</strong> Reference to company, role, previous interactions or purchases</li>
+            <li><strong>Advanced:</strong> Dynamic content based on behavior, preferences, or lifecycle stage</li>
+            <li>Segment your audience for more relevant messaging</li>
+            <li>Use personalization tokens sparingly and strategically</li>
+            <li>Always have fallback values for personalization fields</li>
+        </ul>
+
+        <p>Call-to-action optimization:</p>
+        <ul>
+            <li>Use action verbs that clearly describe the action (Get, Start, Download, Register)</li>
+            <li>Create urgency or communicate benefit in button text</li>
+            <li>Make buttons large enough to tap on mobile (at least 44×44 pixels)</li>
+            <li>Use contrasting colors that stand out from the rest of the design</li>
+            <li>Place primary CTA above the fold and repeat it later for longer emails</li>
+            <li>Limit to 1-2 CTAs per email to avoid decision paralysis</li>
+            <li>Ensure adequate space around buttons (no competing clickable elements)</li>
+        </ul>
+
+        <p>Deliverability considerations:</p>
+        <ul>
+            <li>Authenticate your domain with SPF, DKIM, and DMARC</li>
+            <li>Maintain a clean email list by regularly removing hard bounces</li>
+            <li>Provide easy unsubscribe options to prevent spam complaints</li>
+            <li>Balance text-to-image ratio (avoid all-image emails)</li>
+            <li>Test emails across different email clients before sending</li>
+            <li>Consider sending through a reputable ESP (Email Service Provider)</li>
+            <li>Gradually warm up new IP addresses when sending to large lists</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Default template for email content
+    const defaultTemplate = "Create a {email_type} email with the following details:\n\n" +
+                           "Subject line ideas: {subject_line}\n" +
+                           "Preview text: {preview_text}\n" +
+                           "From: {sender_info}\n\n" +
+                           "The main topic/purpose is: {main_topic}\n" +
+                           "Include these key points: {key_points}\n\n" +
+                           "Target audience: {target_audience}\n" +
+                           "Audience relationship: {audience_relationship}\n" +
+                           "Tone: {tone}\n" +
+                           "Target length: {target_length}\n\n" +
+                           "Primary call-to-action: {cta_primary}\n" +
+                           "Secondary call-to-action: {cta_secondary}\n\n" +
+                           "Include these images: {images_description}\n" +
+                           "Include these links: {links_to_include}\n" +
+                           "Personalization level: {personalization}\n" +
+                           "Timing/context: {timing_context}\n\n" +
+                           "Special instructions: {special_instructions}\n\n" +
+                           "Please follow email marketing best practices, ensuring the content is engaging, scannable, and optimized for both desktop and mobile viewing.";
+    
+    // Listen for changes to update the prompt template
+    document.getElementById('email-type').addEventListener('change', updatePromptFromFields);
+    document.getElementById('subject-line').addEventListener('input', updatePromptFromFields);
+    document.getElementById('preview-text').addEventListener('input', updatePromptFromFields);
+    document.getElementById('sender-info').addEventListener('input', updatePromptFromFields);
+    document.getElementById('main-topic').addEventListener('input', updatePromptFromFields);
+    document.getElementById('key-points').addEventListener('input', updatePromptFromFields);
+    document.getElementById('target-audience').addEventListener('input', updatePromptFromFields);
+    document.getElementById('audience-relationship').addEventListener('change', updatePromptFromFields);
+    document.getElementById('tone').addEventListener('change', updatePromptFromFields);
+    document.getElementById('target-length').addEventListener('change', updatePromptFromFields);
+    document.getElementById('cta-primary').addEventListener('input', updatePromptFromFields);
+    document.getElementById('cta-secondary').addEventListener('input', updatePromptFromFields);
+    document.getElementById('images-description').addEventListener('input', updatePromptFromFields);
+    document.getElementById('links-to-include').addEventListener('input', updatePromptFromFields);
+    document.getElementById('personalization').addEventListener('change', updatePromptFromFields);
+    document.getElementById('timing-context').addEventListener('input', updatePromptFromFields);
+    document.getElementById('special-instructions').addEventListener('input', updatePromptFromFields);
+    
+    function updatePromptFromFields() {
+        const emailType = document.getElementById('email-type').value || "newsletter";
+        const subjectLine = document.getElementById('subject-line').value || "{subject_line}";
+        const previewText = document.getElementById('preview-text').value || "{preview_text}";
+        const senderInfo = document.getElementById('sender-info').value || "{sender_info}";
+        const mainTopic = document.getElementById('main-topic').value || "{main_topic}";
+        const keyPoints = document.getElementById('key-points').value || "{key_points}";
+        const targetAudience = document.getElementById('target-audience').value || "{target_audience}";
+        const audienceRelationship = document.getElementById('audience-relationship').value || "existing-customer";
+        const tone = document.getElementById('tone').value || "professional";
+        const targetLength = document.getElementById('target-length').value || "medium";
+        const ctaPrimary = document.getElementById('cta-primary').value || "{cta_primary}";
+        const ctaSecondary = document.getElementById('cta-secondary').value || "{cta_secondary}";
+        const imagesDescription = document.getElementById('images-description').value || "{images_description}";
+        const linksToInclude = document.getElementById('links-to-include').value || "{links_to_include}";
+        const personalization = document.getElementById('personalization').value || "basic";
+        const timingContext = document.getElementById('timing-context').value || "{timing_context}";
+        const specialInstructions = document.getElementById('special-instructions').value || "{special_instructions}";
+        
+        let template = defaultTemplate;
+        template = template.replace('{email_type}', emailType);
+        template = template.replace('{subject_line}', subjectLine);
+        template = template.replace('{preview_text}', previewText);
+        template = template.replace('{sender_info}', senderInfo);
+        template = template.replace('{main_topic}', mainTopic);
+        template = template.replace('{key_points}', keyPoints);
+        template = template.replace('{target_audience}', targetAudience);
+        template = template.replace('{audience_relationship}', audienceRelationship);
+        template = template.replace('{tone}', tone);
+        template = template.replace('{target_length}', targetLength);
+        template = template.replace('{cta_primary}', ctaPrimary);
+        template = template.replace('{cta_secondary}', ctaSecondary);
+        template = template.replace('{images_description}', imagesDescription);
+        template = template.replace('{links_to_include}', linksToInclude);
+        template = template.replace('{personalization}', personalization);
+        template = template.replace('{timing_context}', timingContext);
+        template = template.replace('{special_instructions}', specialInstructions);
+        
+        document.getElementById('prompt').value = template;
+    }
+});
+{% endblock %} 
