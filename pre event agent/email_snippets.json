@@ -1,0 +1,26 @@
+[
+  {
+    "Subject": "Mentor Scheduling Conflict",
+    "Body": "Hi Casey, I\u2019ll need to leave by 2PM on Saturday. Can anyone cover the afternoon session for me?"
+  },
+  {
+    "Subject": "Workshop Room Question",
+    "Body": "Hi \u2013 Is GML E190 available for the Sunday feedback session? We\u2019d like to reserve it."
+  },
+  {
+    "Subject": "Team Change Request",
+    "Body": "One of our team members dropped out. Can we get a replacement or go ahead as a team of three?"
+  },
+  {
+    "Subject": "Welcome to the Hackathon!",
+    "Body": "Hello {name}, welcome to the {event}! We look forward to seeing you on {date}."
+  },
+  {
+    "Subject": "Welcome to the Hackathon!",
+    "Body": "Hello {name}, we’re excited to have you join the Hackathon 2025! Don’t forget to check the schedule and prepare for the workshops."
+  },
+  {
+    "Subject": "Faculty Invitation to Hackathon",
+    "Body": "Dear {name}, thank you for supporting Hackathon 2025. We would love for you to join as a mentor or judge. Let us know your availability."
+  }
+]

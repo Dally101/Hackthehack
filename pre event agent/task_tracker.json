@@ -1,0 +1,50 @@
+[
+    {
+        "Task": "Create team rosters",
+        "Owner": "Admin",
+        "Email": "sushruth0809@gmail.com",
+        "Status": "Completed",
+        "Due": "2025-04-24",
+        "Notified": true
+    },
+    {
+        "Task": "Order snacks",
+        "Owner": "Assistant",
+        "Email": "dssushruth2000@gmail.com",
+        "Status": "Pending",
+        "Due": "2025-04-26",
+        "Notified": true
+    },
+    {
+        "Task": "Set up judging panel",
+        "Owner": "Coordinator",
+        "Email": "vishvakb21@gmail.com",
+        "Status": "In Progress",
+        "Due": "2025-04-26",
+        "Notified": true
+    },
+    {
+        "Task": "Say hi to sushruth",
+        "Owner": "Assistant",
+        "Email": "dssushruth2000@gmail.com",
+        "Status": "Pending",
+        "Due": "2025-04-27",
+        "Notified": true
+    },
+    {
+        "Task": "Say hi casey",
+        "Owner": "admin",
+        "Email": "dssushruth2000@gmail.com",
+        "Status": "Pending",
+        "Due": "2025-04-27",
+        "Notified": true
+    },
+    {
+        "Task": "say hi to joe",
+        "Owner": "admin",
+        "Email": "dssushruth2000@gmail.com",
+        "Status": "Pending",
+        "Due": "2025-04-27",
+        "Notified": true
+    }
+]

@@ -1,0 +1,35 @@
+[
+    {
+        "ID": "P001",
+        "Name": "Alex Morgan",
+        "Role": "student",
+        "Skills": "Python, UI/UX",
+        "Availability": "Fri 1\u20136PM; Sat 9AM\u20135PM",
+        "Diet": "None",
+        "Pronouns": "she/her",
+        "Email": "sushruth@uwm.edu",
+        "Contacted": true
+    },
+    {
+        "ID": "P002",
+        "Name": "Jordan Lee",
+        "Role": "faculty",
+        "Skills": "JavaScript, ML",
+        "Availability": "Sat 10AM\u20136PM; Sun 9AM\u20131PM",
+        "Diet": "Vegetarian",
+        "Pronouns": "they/them",
+        "Email": "vishvakb21@gmail.com",
+        "Contacted": true
+    },
+    {
+        "ID": "P003",
+        "Name": "Chris Patel",
+        "Role": "faculty",
+        "Skills": "Data Science, LLMs",
+        "Availability": "All Weekend",
+        "Diet": "Vegan",
+        "Pronouns": "he/him",
+        "Email": "dssushruth2000@gmail.com",
+        "Contacted": true
+    }
+]
